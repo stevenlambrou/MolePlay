@@ -25,9 +25,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
+//Basic routing to view pages. Not meant to be the correct/best way
 app.get('*', function(req, res) {
   var page = req.url.substring(1);
   res.render(page, { title: page });
+});
+
+app.get('/adminPortal', function(req, res) {
+  var page = req.url.substring(1);
+  res.render(page, { title: page,
+                    layout: 'portalLayout'
+                  });
 });
 
 // catch 404 and forward to error handler
