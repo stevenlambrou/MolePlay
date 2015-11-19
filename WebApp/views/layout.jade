@@ -3,11 +3,14 @@ html
   head
     link(href='./stylesheets/bootstrap/dist/css/bootstrap.css', rel='stylesheet')
     link(href='./stylesheets/style.css', rel='stylesheet')
-  body(style="padding-top:20px;")
-    .container
-      nav.navbar.navbar-default
+    if title === 'adminPortal'
+      link(href='./stylesheets/adminCSS/dist/css/sb-admin-2.css', rel='stylesheet')
+  body
+    #wrapper
+      nav.navbar.navbar-default.navbar-static-top(role='navigation' style="margin-bottom:0")
         .container-fluid
           .navbar-header
+            a.navbar-brand(href='/') Molecular Playground
           #navbar.navbar-collapse
             ul.nav.navbar-nav
               li
@@ -21,15 +24,16 @@ html
                 a(href='/myAccount') My Account
               li
                 a(href='/logIn') Log In
-    .container
+
       block content
 
-    .container
-      ol.breadcrumb
-        li
-          a(href='/') Home
-        if title != 'Index'
+      .container
+        ol.breadcrumb
           li
-            a(href=title) #{title}
-      footer
-        © ThreeTwenty
+            a(href='/') Home
+          if title !== 'Index'
+            li
+              a(href=title) #{title}
+
+        footer
+          © ThreeTwenty

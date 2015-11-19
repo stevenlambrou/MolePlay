@@ -1,4 +1,17 @@
 extends layout
 
 block content
-  h1 Welcome to #{title}
+  nav.navbar-default.sidebar(role='navigation', style="margin-top:0px")
+    .sidebar-nav.navbar-collapse
+      ul.nav.in#side-menu
+        li
+          a(href='#') Review Applications
+        li
+          a(href='#') Manage Users
+        li
+          a(href='#') Resign Global Admin
+
+  #page-wrapper
+    .row
+      .col-lg-12
+        h1 Welcome to the Admin Portal
