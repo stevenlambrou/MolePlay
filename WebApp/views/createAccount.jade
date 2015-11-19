@@ -1,4 +1,30 @@
 extends layout
 
 block content
-  h1 Welcome to #{title}
+
+          form.form-signin
+            .form-group
+              label.sr-only username
+              input.form-control.required#username(type='text', placeholder='Username')
+            .form-group
+              label.sr-only email
+              input.form-control.required#email(type='email', placeholder='Email')
+            .form-group
+              label.sr-only firstname
+              input.form-control.required#first-name(type='text', placeholder='First Name')
+            .form-group
+              label.sr-only lastname
+              input.form-control.required#last-name(type='text', placeholder='Last Name')
+            .form-group
+              label.sr-only phone
+              input.form-control#phone(type='text', placeholder='Phone Number')
+            .form-group
+              label.sr-only address
+              input.form-control#address(type='text', placeholder='Address')
+            .form-group
+              label.sr-only password
+              input.form-control.required#password(type='password', placeholder='Password')
+            .form-group
+              label.sr-only confirmPassword
+              input.form-control.required#password(type='password', placeholder='Confirm Password')
+            button.btn.btn-default(type='submit') Sign In
