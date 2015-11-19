@@ -1,4 +1,12 @@
 extends layout
 
 block content
-  h1 Welcome to #{title}
+  h1 Login
+  .form.form-signin
+    .form-group
+      label.sr-only username
+      input.form-control.required#username(type='text', placeholder='Username')
+    .form-group
+      label.sr-only email
+      input.form-control.required#email(type='password', placeholder='Password')
+    button.btn.btn-default(type='submit') Sign In

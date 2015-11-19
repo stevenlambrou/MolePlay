@@ -28,14 +28,11 @@ app.use('/users', users);
 //Basic routing to view pages. Not meant to be the correct/best way
 app.get('*', function(req, res) {
   var page = req.url.substring(1);
-  res.render(page, { title: page });
-});
-
-app.get('/adminPortal', function(req, res) {
-  var page = req.url.substring(1);
-  res.render(page, { title: page,
-                    layout: 'portalLayout'
-                  });
+  if(req.url === '/adminPortal') {
+    res.render(page, { title: page, layout: 'portalLayout'});
+  } else {
+    res.render(page, { title: page });
+  }
 });
 
 // catch 404 and forward to error handler
