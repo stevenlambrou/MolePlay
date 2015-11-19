@@ -2,4 +2,10 @@ extends layout
 
 block content
   .jumbotron
-    h1 Welcome to #{title}
+    .row
+      .col-lg-8
+      .col-lg-4
+        form.form-inline(role='search')
+          .form-group
+            input.form-control(type='text' placeholder='Search')
+            button.btn.btn-default(type='submit') Search
