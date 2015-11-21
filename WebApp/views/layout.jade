@@ -18,8 +18,12 @@ html
                 a(href='/createAccount') Create Account
               li
                 a(href='/myAccount') My Account
-              li
-                a(href='/logIn') Log In
+              if loggedIn === true
+                li
+                  a(href='/logIn') Log Out
+              else
+                li
+                  a(href='/logIn') Log In
 
       block content
 
@@ -31,4 +35,6 @@ html
             a(href=title) #{title}
 
       footer
-        © ThreeTwenty 2015
+        p ThreeTwenty 2015
+          span.glyphicon.glyphicon-copyright-mark
+        a(href='/devsitemap') Site Map (Dev)

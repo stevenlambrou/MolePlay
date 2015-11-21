@@ -11,3 +11,7 @@ a {
   padding: 15px;
   margin: 0 auto;
 }
+
+form {
+  padding-bottom: 15px;
+}

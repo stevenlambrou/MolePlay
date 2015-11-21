@@ -1,7 +1,8 @@
 doctype html
 html
   head
-    link(href='./stylesheets/bootstrap/dist/css/bootstrap.css', rel='stylesheet')
+    link(href='./stylesheets/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
+    link(href='./stylesheets/font-awesome/css/font-awesome.css', rel='stylesheet')
     link(href='./stylesheets/style.css', rel='stylesheet')
     link(href='./stylesheets/adminCSS/dist/css/sb-admin-2.css', rel='stylesheet')
   body
@@ -14,5 +15,4 @@ html
             ul.nav.navbar-nav.navbar-right
               li
                 a(href='/myAccount') My Account
-
-      block content
+    block nav

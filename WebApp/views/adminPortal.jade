@@ -1,31 +1,21 @@
-extends portalLayout
+extends adminlayout
 
 block content
-  nav.navbar-default.sidebar(role='navigation', style="margin-top:0px")
-    .sidebar-nav.navbar-collapse
-      ul.nav.in#side-menu
-        li
-          a(href='/adminPortal')
-            i.glyphicon.glyphicon-dashboard
-             Dashboard
-        li
-          a(href='#')
-            i.glyphicon.glyphicon-inbox
-             Review Applications
-        li
-          a(href='#')
-            i.glyphicon.glyphicon-list-alt
-             Manage Users
-        li
-          a(href='#')
-            i.glyphicon.glyphicon-alert
-             Resign Global Admin
-        li
-          a(href='#')
-            i.glyphicon.glyphicon-log-out
-             Logout
-
-  #page-wrapper(style="min-height: 582px;")
-    .row
-      .col-lg-12
-        h1 Welcome to the Admin Portal
+  .row
+    .col-lg-12
+      h1.page-header Admin Portal - Dashboard
+  .row
+    .col-lg-3.col-md-6
+      .panel.panel-primary
+        .panel-heading
+          .row
+            .col-xs-3
+              i.fa.fa-cloud.fa-5x
+            .col-xs-9.text-right
+              div New Molecules!
+        a(href='/reviewmolecules')
+          .panel-footer
+            span.pull-left Review Molecule Submissions
+            span.pull-right
+              i.fa.fa-arrow-circle-right
+            .clearfix
