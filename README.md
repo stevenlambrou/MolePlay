@@ -22,3 +22,5 @@
   
   The WebApp can be viewed in your browser if you navigate to: localhost:3000
   
+
+Completed views can be viewed [here](https://tranquil-eyrie-6820.herokuapp.com/devsitemap) without running the server on your computer.
