@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1.page-header Upload Molecule
+  form.form-horizontal
+    .form-group
+      label.col-md-4.control-label(for="moleculeName") Molecule Name
+      .col-md-4
+        input.form-control#moleculeName(type='text' placeholder='Molecule')
+    .form-group
+      label.col-md-4.control-label(for="uploadScript") XYZ Coordinate File
+      .col-md-4
+        input#uploadScript(type='file')
+    .form-group
+      label.col-md-4.control-label(for="uploadJmol") Jmol Script File
+      .col-md-4
+        input#uploadJmol(type='file')
+    .form-group
+      label.col-md-4.control-label(for="affiliation") Affiliation
+      .col-md-4
+        input.form-control#affiliation(type='text' placeholder='Affiliation')
+    .form-group
+      label.col-md-4.control-label(for="comments") Additional Information
+      .col-md-4
+        textarea.form-control#comments(type='text')
+        button.btn.btn-default(type='submit' style="margin-top:15px;") Upload

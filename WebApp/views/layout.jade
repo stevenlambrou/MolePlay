@@ -1,12 +1,17 @@
 doctype html
 html
   head
+<<<<<<< HEAD
     script(src='http://code.jquery.com/jquery-1.9.1.js')
     script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
     link(href='./stylesheets/bootstrap/dist/css/bootstrap.css', rel='stylesheet')
     link(href='./stylesheets/style.css', rel='stylesheet')
     script(src="/stylesheets/bootstrap/js/transition.js")
     script(src="/stylesheets/bootstrap/js/collapse.js")
+=======
+    link(href='/stylesheets/bootstrap/dist/css/bootstrap.css', rel='stylesheet')
+    link(href='/stylesheets/style.css', rel='stylesheet')
+>>>>>>> origin/master
   body(style="margin-top:20px;")
     .container
       nav.navbar.navbar-default(role='navigation')
@@ -26,7 +31,7 @@ html
               li
                 a(href='/createaccount') Create Account
               li
-                a(href='/myaccount') My Account
+                a(href='/users/') My Account
               if loggedIn === true
                 li
                   a(href='/login') Log Out

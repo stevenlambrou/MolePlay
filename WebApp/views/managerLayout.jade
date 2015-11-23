@@ -5,28 +5,21 @@ block nav
     .sidebar-nav.navbar-collapse
       ul.nav.in#side-menu
         li
-          a(href='/adminportal')
+          a(href='/manageMySite')
             i.glyphicon.glyphicon-dashboard
              Dashboard
         li
-          a(href='/reviewsitemanagerapplications')
-            i.glyphicon.glyphicon-inbox
-             Review Applications
-        li
           a(href='#')
-            i.glyphicon.glyphicon-list-alt
-             Manage Users
-          li
-            a(href='/reviewmolecules')
-              i.glyphicon.glyphicon-list-alt
-               Review Molecules
+            i.glyphicon.glyphicon-inbox
+             Manage Local Delegates
         li
           a(href='#')
             i.glyphicon.glyphicon-alert
-             Resign Global Admin
+             Resign Site Manager
         li
           a(href='#')
             i.glyphicon.glyphicon-log-out
              Logout
+
   #page-wrapper(style="min-height: 582px;")
     block content
