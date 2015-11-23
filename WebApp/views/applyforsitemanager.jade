@@ -8,15 +8,15 @@ block content
         .form-group
           label.col-md-1.control-label Street
           .col-md-4
-            input.form-control.required#username(type='text', placeholder='Street')
+            input.form-control.required#street(type='text', placeholder='Street')
         .form-group
           label.col-md-1.control-label City
           .col-md-4
-            input.form-control.required#username(type='text', placeholder='City')
+            input.form-control.required#city(type='text', placeholder='City')
         .form-group
           label.col-md-1.control-label State
           .col-md-4
-            input.form-control.required#username(type='text', placeholder='State')
+            input.form-control.required#state(type='text', placeholder='State')
         .form-group
           label.col-md-1.control-label Country
           .col-md-4
@@ -24,6 +24,18 @@ block content
               option(value='1') Select a Country
               option(value='2') United States
               option(value='3') Canada
+        .form-group
+          label.col-md-1.control-label First Name
+          .col-md-4
+            input.form-control.required#firstname(type='text', placeholder='First Name')
+        .form-group
+          label.col-md-1.control-label Last Name
+          .col-md-4
+            input.form-control.required#lastname(type='text', placeholder='Last Name')
+        .form-group
+          label.col-md-1.control-label Email
+          .col-md-4
+            input.form-control.required#email(type='text', placeholder='Email')
         .form-group
           .col-md-6.col-md-offset-1
             label.control-label(for="comments") Reason for Site Manager application

@@ -7,4 +7,16 @@ block content
         .panel-heading
           h Site Applications
         .panel-body
-          T Table goes here
+          table.table#temp
+            thead
+              tr
+                th Number
+                th Name
+                th Application
+                th Email
+            tbody
+            //TESTING ONLY
+          p Testing Only
+          button.btn.btn-default(onclick='fillTable(["red","blue","green","yellow"])') Populate
+  script(type='text/javascript').
+    fillTable(["pink","blue","orange","yellow"]);
