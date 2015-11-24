@@ -43,7 +43,7 @@ Completed views can be viewed [here](https://tranquil-eyrie-6820.herokuapp.com/d
   $ sudo mkdir ../data
   $ sudo chmod 775 ../data
   $ sudo chown 'username' ../data
-  $ initdb ../data
+  $ initdb -D ../data
   ```
 
   Note that you should not type 'username' - you should type your computer's terminal username. Mine was 'bob'
