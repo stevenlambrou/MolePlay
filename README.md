@@ -27,17 +27,15 @@ Completed views can be viewed [here](https://tranquil-eyrie-6820.herokuapp.com/d
 
 ## Installing PostgreSQL
 
-  These instructions are specific to a Mac, which is probably going to be the same on anything you can get bash on.
+  These instructions are specific to a Mac, which is probably going to be the same on anything you can get bash on (including using powershell for windows or git-bash)
 
-  To actually install PostgreSQL you will need to install Homebrew, the greatest package manager for developers:
-
-  http://brew.sh/
+  To actually install PostgreSQL you will need to install Homebrew, the greatest package manager for developers: http://brew.sh/
 
   It runs on top of Ruby - it's a great time.
 
   Then, from any directory, run the following command (bash):
   ```
-  brew install postgresql
+  $ brew install postgresql
   ```
 
   Enter the following in bash when in the MolePlay repo:
@@ -45,7 +43,7 @@ Completed views can be viewed [here](https://tranquil-eyrie-6820.herokuapp.com/d
   $ sudo mkdir ../data
   $ sudo chmod 775 ../data
   $ sudo chown 'username' ../data
-  $ initdb ../data
+  $ initdb -D ../data
   ```
 
   Note that you should not type 'username' - you should type your computer's terminal username. Mine was 'bob'
