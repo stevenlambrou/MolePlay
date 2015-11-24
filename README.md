@@ -46,4 +46,12 @@ Completed views can be viewed [here](https://tranquil-eyrie-6820.herokuapp.com/d
   $ initdb -D ../data
   ```
 
-  Note that you should not type 'username' - you should type your computer's terminal username. Mine was 'bob'
+  Note that you should not type 'username' - you should type your computer's terminal username. Mine was 'bob' - apparently most usernames are lowercase, not sure how you can all find the 
+
+  From here, you should try to run the `postgres_setup.sql` file. Note the `.sql` is the extension for SQL, the extension for all SQL server scripts. To do this, run the following command:
+
+  ```
+  $ psql -d postgresql -f postgres_setup.sql
+  ```
+
+  Let me know if anyone has troubles executing this... not sure what it's going to really be like since I've already done most of this so I might be forgetting a depencency. Good luck guys :)
