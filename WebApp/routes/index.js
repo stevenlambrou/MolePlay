@@ -21,4 +21,8 @@ router.get('/login', function(req, res, next) {
   res.render('logIn', { title: 'Log In' });
 });
 
+router.get('/devsitemap', function(req, res, next) {
+  res.render('devsitemap', { title: 'devsitemap' });
+});
+
 module.exports = router;
