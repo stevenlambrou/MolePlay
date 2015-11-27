@@ -1,0 +1,4 @@
+ uid | username | pass | fname | lname | email | affil | phone 
+-----+----------+------+-------+-------+-------+-------+-------
+(0 rows)
+
