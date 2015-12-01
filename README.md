@@ -39,9 +39,9 @@ Completed views can be viewed [here](https://tranquil-eyrie-6820.herokuapp.com/d
   Enter the following in bash when in the `MolePlay` repo:
   ```
   $ sudo mkdir /data
-  $ sudo chmod 775 /data
-  $ sudo chown 'username' /data
-  $ initdb -D /data
+  $ sudo chmod 775 data
+  $ sudo chown 'username' data
+  $ initdb -D data
   ```
 
   Note that you should not type 'username' - you should type your computer's terminal username. Mine was `bob`.
@@ -49,7 +49,7 @@ Completed views can be viewed [here](https://tranquil-eyrie-6820.herokuapp.com/d
   The command above initializes the database. To run it again from the `MolePlay` repo, type this command
 
   ```
-  $ postgres -D /data
+  $ postgres -D data
   ```
 
   From here (when you have the database running) you should try to run the `postgres_setup.sql` file. Note the `.sql` is the extension for SQL, the extension for all SQL server scripts. To do this, run the following command:
