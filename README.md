@@ -31,14 +31,12 @@ Completed views can be viewed [here](https://tranquil-eyrie-6820.herokuapp.com/d
 
   To actually install PostgreSQL you will need to install Homebrew, the greatest package manager for developers: http://brew.sh/
 
-  It runs on top of Ruby - it's a great time.
-
   Then, from any directory, run the following command (bash):
   ```
   $ brew install postgresql
   ```
 
-  Enter the following in bash when in the MolePlay repo:
+  Enter the following in bash when in the `MolePlay` repo:
   ```
   $ sudo mkdir ../data
   $ sudo chmod 775 ../data
@@ -46,4 +44,17 @@ Completed views can be viewed [here](https://tranquil-eyrie-6820.herokuapp.com/d
   $ initdb -D ../data
   ```
 
-  Note that you should not type 'username' - you should type your computer's terminal username. Mine was 'bob'
+  Note that you should not type 'username' - you should type your computer's terminal username. Mine was `bob`.
+
+  The command above initializes the database. To run it again from the `MolePlay` repo, type this command
+
+  ```
+  $ postgres -D ../data
+  ```
+
+  From here (when you have the database running) you should try to run the `postgres_setup.sql` file. Note the `.sql` is the extension for SQL, the extension for all SQL server scripts. To do this, run the following command:
+
+  ```
+  $ psql -d postgresql -f postgres_setup_1.sql
+  $ psql -d moleplay -f postgres_setup_2.sql
+  ```

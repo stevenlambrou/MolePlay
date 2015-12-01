@@ -4,10 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
-var routes = require('./routes/index');
-var users = require('./routes/users');
-
+var errors = require("./middlewares/errors")
 var app = express();
 
 // view engine setup
@@ -22,49 +19,29 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
-
-//Basic routing to view pages. Not meant to be the correct/best way
-app.get('*', function(req, res) {
-  var page = req.url.substring(1);
-  if(req.url === '/adminPortal') {
-    res.render(page, { title: page, layout: 'portalLayout'});
-  } else {
-    res.render(page, { title: page });
-  }
-});
+app.use(require('./controllers/genuserrouter'));
+app.use("/author", require("./controllers/authorrouter"));
+// app.use("/author", require("./controllers/authorrouter"));
+// app.use("/author", require("./controllers/authorrouter"));
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
-// error handlers
-
+app.use(errors.passError);
 // development error handler
 // will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}
-
+app.use(errors.devErrorHandler(app));
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
-});
+app.use(errors.errorHandler)
 
 
 module.exports = app;
+
+// //Basic routing to view pages. Not meant to be the correct/best way
+// app.get('*', function(req, res) {
+//   var page = req.url.substring(1);
+//   if(req.url === '/adminPortal') {
+//     res.render(page, { title: page, layout: 'portalLayout'});
+//   } else {
+//     res.render(page, { title: page });
+//   }
+// });
