@@ -1,5 +1,8 @@
 var express = require('express');
+var session = require('espress-session')
 var router  = express.Router();
+
+var online = [];
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
