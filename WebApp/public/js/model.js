@@ -1,4 +1,5 @@
-var pg = require('../pg');
+var pg = require('pg');
+var db = require('./db_config');
 var conString = "postgres://postgres:postgres@localhost/moleplay";
 
 function addUser(username, pass, fname, lname, email, affil, phone){

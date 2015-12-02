@@ -1,2 +1,2 @@
-var username = "bob";
-var password = "postgres";
+exports.username = "bob";
+exports.password = "postgres";
