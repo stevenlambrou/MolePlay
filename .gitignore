@@ -1,2 +1,3 @@
 # Ignore SQL Database #
 /data
+#/WebApp/public/js/db_config.js

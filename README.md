@@ -60,3 +60,5 @@ Completed views can be viewed [here](https://tranquil-eyrie-6820.herokuapp.com/d
   $ psql -d postgresql -f postgres_setup_1.sql
   $ psql -d moleplay -f postgres_setup_2.sql
   ```
+
+  After doing this, go to `/WebApp/public/js/db_config.js` and type in your username and password that went along with your database setup. If you have unix and followed the above instructions, username should be your unix username and the password should be `password`.
