@@ -36,6 +36,8 @@ Completed views can be viewed [here](https://tranquil-eyrie-6820.herokuapp.com/d
   $ brew install postgresql
   ```
 
+  Note, this will install PostgreSQL version 9.4.5
+
   Enter the following in bash when in the `MolePlay` repo:
   ```
   $ sudo mkdir /data
