@@ -3,9 +3,9 @@ extends layout
 block content
   .row
     .col-md-3.col-md-offset-9
-      form.form-inline(role='search')
+      form.form-inline(role='search', method='post')
         .input-group
-          label.sr-only Search
-          input.form-control(type='text' placeholder='Search')
+          label.sr-only search
+          input.form-control(type='text' placeholder='Search', name='search')
           span.input-group-btn
             button.btn.btn-default(type='submit') Search

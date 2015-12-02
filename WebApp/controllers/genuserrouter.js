@@ -1,10 +1,10 @@
 var express = require('express');
-var session = require('espress-session')
+var session = require('express-session')
 var router  = express.Router();
 
 var online = [];
 
-/* GET home page. */
+/* GET routes */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Index' });
 });
@@ -31,8 +31,16 @@ router.get('/devsitemap', function(req, res, next) {
 
 /* POST routes */
 router.post('/playwithmolecules', function(req, res, next) {
-  res.render('playWithMolecules', { title: 'Play With Molecules' });
-  res.send(req.search);
+  res.render('playWithMolecules', { title: 'Play With ' + req.body.search });
+});
+
+router.post('/createaccount', function(req, res, next) {
+  // Do stuff!
+  res.send('The site is not accepting applications at this time.')
+});
+
+router.post('/login', function(req, res, next) {
+  
 });
 
 module.exports = router;
