@@ -29,7 +29,7 @@ html
                 a(href='/createaccount') Create Account
               li
                 a(href='/users/') My Account
-              if loggedIn === true
+              if loggedIn
                 li
                   a(href='/login') Log Out
               else
@@ -43,7 +43,7 @@ html
           a(href='/') Home
         if title !== 'Index'
           li
-            a(href=title) #{title}
+            a(href=currentpage) #{title}
 
       footer
         p ThreeTwenty 2015

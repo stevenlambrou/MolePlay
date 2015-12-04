@@ -2,37 +2,37 @@ extends layout
 
 block content
   h1.page-header Create Account
-  form.form-horizontal
+  form.form-horizontal(method='post')
     .form-group
       label.col-md-4.control-label Username
       .col-md-4
-        input.form-control.required#username(type='text', placeholder='Username')
+        input.form-control.required#username(type='text', placeholder='Username', name='username')
     .form-group
       label.col-md-4.control-label Email
       .col-md-4
-        input.form-control.required#email(type='email', placeholder='Email')
+        input.form-control.required#email(type='email', placeholder='Email', name='email')
     .form-group
       label.col-md-4.control-label First Name
       .col-md-4
-        input.form-control.required#first-name(type='text', placeholder='First Name')
+        input.form-control.required#first-name(type='text', placeholder='First Name', name='firstname')
     .form-group
       label.col-md-4.control-label Last Name
       .col-md-4
-        input.form-control.required#last-name(type='text', placeholder='Last Name')
+        input.form-control.required#last-name(type='text', placeholder='Last Name', name='lastname')
     .form-group
       label.col-md-4.control-label Phone
       .col-md-4
-        input.form-control#phone(type='text', placeholder='Phone Number')
+        input.form-control#phone(type='text', placeholder='Phone Number', name='phonenumber')
     .form-group
-      label.col-md-4.control-label Address
+      label.col-md-4.control-label Affiliation
       .col-md-4
-        input.form-control#address(type='text', placeholder='Address')
+        input.form-control.required#affiliation(type='text', placeholder='Affiliation', name='affiliation')
     .form-group
       label.col-md-4.control-label Password
       .col-md-4
-        input.form-control.required#password(type='password', placeholder='Password')
+        input.form-control.required#password(type='password', placeholder='Password', name='password')
     .form-group
       label.col-md-4.control-label Confirm Password
       .col-md-4
-        input.form-control.required#password(type='password', placeholder='Confirm Password')
+        input.form-control.required#password(type='password', placeholder='Confirm Password', name='password2')
         button.btn.btn-default(type='submit' style="margin-top:15px;") Create Account

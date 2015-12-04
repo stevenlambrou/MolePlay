@@ -1,11 +1,14 @@
 extends layout
 
 block content
-  .form.form-signin(method='post')
+  form.form-signin(method='post')
     .form-group
       label.sr-only username
       input.form-control.required#username(type='text', placeholder='Username', name='username')
     .form-group
       label.sr-only email
-      input.form-control.required#email(type='password', placeholde='Password', name='password')
+      input.form-control.required#email(type='password', placeholder='Password', name='password')
     button.btn.btn-default(type='submit') Sign In
+
+block content
+  label.sr-only message
