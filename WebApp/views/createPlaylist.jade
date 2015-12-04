@@ -2,3 +2,15 @@ extends layout
 
 block content
   h1 Welcome to #{title}
+  form
+    .form-group
+      label.col-md-4.control-label Playlist Name
+      .col-md-4
+        input.form-control.required#playlistname(type='text', placeholder='Playlist Name', name='playlistname')
+    .form-group
+      label.col-md-4.control-label Playlist
+      .col-md-4
+        table
+          td
+            th
+              Molecule
