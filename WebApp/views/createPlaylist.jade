@@ -1,8 +1,10 @@
 extends layout
-
+block scripts
+  script(src='/js/tables.js')
+  
 block content
-  h1 Welcome to #{title}
-  form
+  h1 Create Playlist
+  form.form-horizontal
     .form-group
       label.col-md-4.control-label Playlist Name
       .col-md-4
@@ -10,7 +12,15 @@ block content
     .form-group
       label.col-md-4.control-label Playlist
       .col-md-4
-        table
-          td
-            th
-              Molecule
+        table#playlist
+          th Molecule
+          th Author
+          th
+
+  table#mols(style="width:600px; margin-left: calc(50% - 300px) ")
+    th Molecule
+    th Author
+    th
+
+  script(type="text/javascript").
+    populateMolecules();
