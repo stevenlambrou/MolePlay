@@ -5,14 +5,17 @@ var join = require("path").join;
 
 
 function homepage(req, res){
-	//res.render('homepage')
+	res.render('myAccount', { title: 'My Account' });
 }
+
 function uploadMolecule(req, res){
 	console.log("uploaded molecule");
 	//do something
 }
-/* GET home page. */
-router.post('/uploadMolecule', uploadMolecule);
 
+/* GET home page. */
+router.get('/', homepage);
+
+router.post('/uploadMolecule', uploadMolecule);
 
 module.exports = router;
