@@ -2,7 +2,7 @@ var pg = require('pg');
 var db = require('./db_config');
 var conString = "postgres://" + db.username + ":" + db.password + "@localhost/moleplay";
 
-// cb gets (undefined,true) on success, (err,undefined) on failure 
+// cb gets (undefined,true) on success, (err,undefined) on failure
 // username - string
 // pass - string
 // fname - string
@@ -18,7 +18,7 @@ function addUser(username, pass, fname, lname, email, affil, phone, cb){
     if (err){
       return console.error("error connecting to the database", err);
     }
-    client.query("INSERT INTO Users (username, pass, fname, lname, email, affil, phone) VALUES ($1,$2,$3,$4,$5,$6,$7)", [username,pass,fname,lname,email,affil,phone], function(err, result){  
+    client.query("INSERT INTO Users (username, pass, fname, lname, email, affil, phone) VALUES ($1,$2,$3,$4,$5,$6,$7)", [username,pass,fname,lname,email,affil,phone], function(err, result){
       done();{
         if (err){
           return console.error("error adding the new user " + username, err);
@@ -30,7 +30,7 @@ function addUser(username, pass, fname, lname, email, affil, phone, cb){
   });
 }
 
-// cb gets (undefined,true) on success, (err,undefined) on failure 
+// cb gets (undefined,true) on success, (err,undefined) on failure
 // username - string
 // password - string
 // cb - function(error, result)
@@ -55,7 +55,7 @@ function isValidLogin(username, password, cb){
   });
 }
 
-// cb gets (undefined,molecule) on success, (err,undefined) on failure 
+// cb gets (undefined,molecule) on success, (err,undefined) on failure
 // name - string
 // cb - function(error,result)
 function getMoleculeByName(name, cb){
@@ -79,7 +79,7 @@ function getMoleculeByName(name, cb){
   });
 }
 
-// cb gets (undefined,true) on success, (err,undefined) on failure 
+// cb gets (undefined,true) on success, (err,undefined) on failure
 // uid - int (userId to promote)
 // desiredRole - int (role to be given)
 // cb - function(error, result)
@@ -183,11 +183,6 @@ function getPlaylistById(pid, cb){
 // mid - int (moleculeId)
 // cb - function(error, result)
 function addMoleculeToPlaylist(pid, mid, cb){
-  
-
-
-
-
   pg.connect(conString, function(err, client, done){
     if (err){
       return console.error("error connecting to the database", err);
@@ -225,8 +220,7 @@ function updatePlaylistOrder(pid, mids, cb){
       }
       if (result.rows[0] !== undefined){
         cb(undefined, result.rows[0]);
-      }
-      else {
+      } else {
         cb("could not find username: " + username, undefined);
       }
     });
