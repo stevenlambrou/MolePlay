@@ -2,7 +2,7 @@ var express = require('express');
 var router  = express.Router();
 
 function homepage(req, res, next) {
-  res.render('adminLayout');
+  res.render('adminPortal');
 }
 
 /* GET routes */
