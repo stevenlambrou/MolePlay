@@ -11,7 +11,7 @@ create table Users (uid  serial primary key , username varchar(50), pass varchar
 create table Sites (siteid  serial primary key, name varchar(50), street varchar(50), town varchar(50), state varchar(50), country varchar(80));
 create table Roles (uid int references Users(uid), siteid int references Sites(siteid), permission int);
 create table Molecules (mid  serial primary key, uid int references Users(uid), jmol varchar(150), xyz varchar(150), approved boolean, comment varchar(200));
-create table Playlists (pid  serial primary key, mid int references Molecules(mid), title varchar(100), sid int references Sites(siteid), durations int);
+create table Playlists (pid  serial primary key, mids varchar(200), title varchar(100), sid int references Sites(siteid), durations int);
 create table Schedules (schedid serial primary key, siteid int references Sites(siteid), pid int references Playlists(pid), stimes varchar(250), etimes varchar(250));
 
 insert into Users (username, pass, fname, lname, email, affil, phone) values('bambrose', 'Password1', 'Bob', 'Ambrose', 'rambrose@umass.edu', 'Team ThreeTwenty', '508-692-8078');

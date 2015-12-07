@@ -3,81 +3,73 @@ var db = require('./db_config');
 var conString = "postgres://" + db.username + ":" + db.password + "@localhost/moleplay";
 var results = [];
 
-
-// returns boolean
-function addUser(username, pass, fname, lname, email, affil, phone){
-  addUserHelper(username, pass, fname, lname, email, affil, phone);
-  return results;
-}
-
-function addUserHelper(username, pass, fname, lname, email, affil, phone){
+// username - string
+// pass - string
+// fname - string
+// lname - string
+// email - string
+// affil - string
+// phone - string
+// cb - function(err, result) (true/false)
+// tested
+function addUser(username, pass, fname, lname, email, affil, phone, cb){
   results = false;
   pg.connect(conString, function(err, client, done){
     if (err){
       return console.error("error connecting to the database", err);
     }
-    var query = client.query("INSERT INTO Users (username, pass, fname, lname, email, affil, phone) VALUES ($1,$2,$3,$4,$5,$6,$7)", [username,pass,fname,lname,email,affil,phone], function(err, result){
-      if (err){
-        done();
-        return console.error("error adding the new user " + username, err);
+    client.query("INSERT INTO Users (username, pass, fname, lname, email, affil, phone) VALUES ($1,$2,$3,$4,$5,$6,$7)", [username,pass,fname,lname,email,affil,phone], function(err, result){  
+      done();{
+        if (err){
+          return console.error("error adding the new user " + username, err);
+        }
       }
-    });
-    query.on('end', function(){
-      done();
-      results = true;
+      if (result === undefined) cb('error adding user', undefined);
+      else cb(undefined, result.rowCount === 1);
+      cb(err,result);
     });
   });
 }
 
-function getUserByUsername(username){
-  getUserByUsernameHelper(username);
-  return results[0];
-}
-
-function getUserByUsernameHelper(username){
+// username - string
+// cb - function(error,result)
+// tested
+function getUserByUsername(username, cb){
   results = [];
   pg.connect(conString, function(err, client, done){
     if (err){
       return console.error("error connecting to the database", err);
     }
-    var query = client.query("SELECT * FROM Users WHERE username = $1", [username], function(err, result){
-      if (err){
-        done();
-        return console.error(("error querying for username: " + username), err);
+    client.query("SELECT * FROM Users WHERE username = $1", [username], function(err, result){
+      done();{
+        if (err){
+          return console.error(("error querying for username: " + username), err);
+        }
       }
-    });
-    query.on('row', function(row) {
-      results.push(row);
-    });
-    query.on('end', function(){
-      done();
-      return results[0];
+      if (result.rows[0] !== undefined){
+        cb(undefined, result.rows[0]);
+      }
     });
   });
 }
 
-function getUserByUserId(userId){
-  getUserByUserIdHelper(userId);
-  return results[0];
-}
-
-function getUserByUserIdHelper(userId){
+// userId - int
+// cb - function(error,result)
+// tested
+function getUserByUserId(userId, cb){
   results = [];
   pg.connect(conString, function(err, client, done){
     if (err){
       return console.error("error connecting to the database", err);
     }
-    var query = client.query("SELECT * FROM Users WHERE uid = $1", [userId], function(err, result){
-      if (err){
-        done();
-        return console.error(("error querying for userId: " + userId), err);
+    client.query("SELECT * FROM Users WHERE uid = $1", [userId], function(err, result){
+      done();{
+        if (err){
+          return console.error("error querying for userId " + userId,err);
+        }
       }
-    });
-    query.on('row', function(row) {
-      results.push(row);
-    });
-    query.on('end', function(){
-      done();
+      if (result.rows[0] === undefined) cb("no results from querying for userId: " + userId, undefined)
+      else cb(undefined,result.rows[0]);
     });
   });
 }
