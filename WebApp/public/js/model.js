@@ -141,7 +141,7 @@ function createPlaylist(title, siteId, durations, cb){
     client.query("INSERT INTO Playlists (mids, title, sid, durations) VALUES ('', $1, $2, $3)", [title, siteId, durations], function(err, result){
       done();{
         if (err){
-          return console.error(("error querying for username: " + username), err);
+          return console.error(("error adding playlist: " + title), err);
         }
       }
       if (result !== undefined){
@@ -157,12 +157,13 @@ function createPlaylist(title, siteId, durations, cb){
 // cb gets (undefined, playlist) on success, (error, undefined) on failure
 // pid - int (playlistId)
 // cb - function(error, result)
+// tested
 function getPlaylistById(pid, cb){
   pg.connect(conString, function(err, client, done){
     if (err){
       return console.error("error connecting to the database", err);
     }
-    client.query("SELECT * FROM Playlists WHERE username = $1", [pid], function(err, result){
+    client.query("SELECT * FROM Playlists WHERE pid = $1", [pid], function(err, result){
       done();{
         if (err){
           return console.error(("error querying for playlistId: " + pid), err);
@@ -182,52 +183,59 @@ function getPlaylistById(pid, cb){
 // pid - int (playlistId)
 // mid - int (moleculeId)
 // cb - function(error, result)
+// tested
 function addMoleculeToPlaylist(pid, mid, cb){
-  
-
-
-
-
-  pg.connect(conString, function(err, client, done){
-    if (err){
-      return console.error("error connecting to the database", err);
+  getPlaylistById(pid,function(oerr, ores){
+    var mols = ores.mids === '' ? [] : ores.mids.split(",");
+    if (mols.indexOf(mid) !== -1){
+      cb(undefined,true);
     }
-    client.query("SELECT * FROM Users WHERE username = $1", [username], function(err, result){
-      done();{
+    else {
+      mols.push(mid);
+      var updated_mols = mols.join(",");
+      pg.connect(conString, function(err, client, done){
         if (err){
-          return console.error(("error querying for username: " + username), err);
+          return console.error("error connecting to the database", err);
         }
-      }
-      if (result.rows[0] !== undefined){
-        cb(undefined, result.rows[0]);
-      }
-      else {
-        cb("could not find username: " + username, undefined);
-      }
-    });
+        client.query("UPDATE Playlists SET mids = $1 WHERE pid = $2", [updated_mols, pid], function(err, result){
+          done();{
+            if (err){
+              return console.error(("error updating molecule: " + pid), err);
+            }
+          }
+          if (result !== undefined){
+            cb(undefined, true);
+          }
+          else {
+            cb("could not find pid to update: " + pid, undefined);
+          }
+        });
+      });
+    }
   });
 }
 
+// WORKS FOR GIVING AN ENTIRELY NEW SET OF MOLECULES (mids)
 // cb gets (undefined, true) on success, (err, undefined) on failure
 // pid - int (playlistId)
 // mids - list(int) (order of moleculeIds)
-//
+// tested
 function updatePlaylistOrder(pid, mids, cb){
   pg.connect(conString, function(err, client, done){
     if (err){
       return console.error("error connecting to the database", err);
     }
-    client.query("SELECT * FROM Users WHERE username = $1", [username], function(err, result){
+    client.query("UPDATE Playlists SET mids = $1 WHERE pid = $2", [mids.join(","), pid], function(err, result){
       done();{
         if (err){
-          return console.error(("error querying for username: " + username), err);
+          return console.error(("error updating playlist order for playlistId: " + pid), err);
         }
       }
       if (result.rows[0] !== undefined){
         cb(undefined, result.rows[0]);
       }
       else {
-        cb("could not find username: " + username, undefined);
+        cb("could not find playlistId: " + pid, undefined);
       }
     });
   });
@@ -235,22 +243,23 @@ function updatePlaylistOrder(pid, mids, cb){
 
 // cb gets (undefined, pending_molecules) on success, (err, undefined) on failure
 // cb - function(error, result)
+// almost tested, need real data go to by
 function getPendingMolecules(cb){
   pg.connect(conString, function(err, client, done){
     if (err){
       return console.error("error connecting to the database", err);
     }
-    client.query("SELECT * FROM Users WHERE username = $1", [username], function(err, result){
+    client.query("SELECT * FROM Molecules WHERE approved = false", function(err, result){
       done();{
         if (err){
-          return console.error(("error querying for username: " + username), err);
+          return console.error(("error querying for pending molecules"), err);
         }
       }
       if (result.rows[0] !== undefined){
         cb(undefined, result.rows[0]);
       }
       else {
-        cb("could not find username: " + username, undefined);
+        cb("could not find any pending molecules", undefined);
       }
     });
   });
