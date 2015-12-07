@@ -1,11 +1,11 @@
 var express = require('express');
 var router  = express.Router();
 var path = require('path');
-var join = require("path").join;
+var join = require('path').join;
 
 
 function homepage(req, res){
-	res.render('myAccount', { title: 'My Account' });
+	res.render('portalLayout', { title: 'My Account' });
 }
 
 function uploadMolecule(req, res){

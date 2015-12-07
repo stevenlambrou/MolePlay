@@ -23,8 +23,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(require('./controllers/genuserrouter'));
 app.use("/author", require("./controllers/authorrouter"));
-// app.use("/sitemanager", require("./controllers/sitemanagerrouter"));
-// app.use("/globaladmin", require("./controllers/globaladminrouter"));
+app.use("/sitemanager", require("./controllers/sitemanagerrouter"));
+app.use("/globaladmin", require("./controllers/globaladminrouter"));
 
 // catch 404 and forward to error handler
 app.use(errors.passError);
