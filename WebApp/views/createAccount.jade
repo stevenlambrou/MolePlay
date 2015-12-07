@@ -5,12 +5,15 @@ block content
   form.form-horizontal(method='post')
     .form-group
       label.col-md-4.control-label Permission Level
-        label.radio-inline <strong>Author</strong>
-          input.form-control.required#permission1(type="radio", name="permission", value="author", checked)
-        label.radio-inline <strong>Site Manager</strong>
-          input.form-control.required#permission2(type="radio", name="permission", value="sitemanager")
-        label.radio-inline <strong>Global Manager</strong>
-          input.form-control.required#permission3(type="radio", name="permission", value="globalmanager")
+      .col-md-4
+        .controls
+          label.radio-inline Author
+            input.form-control.required#permission1(type="radio", name="permission", value="author", checked)
+          label.radio-inline Site Manager
+            input.form-control.required#permission2(type="radio", name="permission", value="sitemanager")
+          label.radio-inline Global Manager
+            input.form-control.required#permission3(type="radio", name="permission", value="globalmanager")
+
     br
     .form-group
       label.col-md-4.control-label Username
