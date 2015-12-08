@@ -179,6 +179,33 @@ function getPlaylistById(pid, cb){
   });
 }
 
+// cb gets (undefined, true) on success, (error, undefined) on failure
+// uid - int (userId)
+// sid - int (siteid)
+// permission - int (desired result permission)
+// cb - function(error,result)
+// tested
+function setUserPermission(uid,sid,permission,cb){
+  pg.connect(conString, function(err, client, done){
+    if (err){
+      return console.error("error connecting to the database", err);
+    }
+    client.query("UPDATE Roles SET permission = $1 WHERE uid = $2 AND siteid = $3", [permission,uid,sid], function(err, result){
+      done();{
+        if (err){
+          return console.error(("error updating user permission for: " + uid), err);
+        }
+      }
+      if (result !== undefined){
+        cb(undefined, true);
+      }
+      else {
+        cb("could not find userId: " + uid, undefined);
+      }
+    });
+  });
+}
+
 // cb gets (undefined, true) on success, (err, undefined) on failure
 // pid - int (playlistId)
 // mid - int (moleculeId)
