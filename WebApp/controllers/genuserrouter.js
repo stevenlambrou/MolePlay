@@ -1,39 +1,27 @@
 var express = require('express');
 var session = require('express-session');
+var users   = require('../middlewares/users.js')
 var router  = express.Router();
 var app     = express();
 
-var sesh;
-var users = [];
-
-function checkLoginStatus(req) {
-  sesh = req.session;
-  var loginStatus = false;
-  if (sesh.username) {
-    loginStatus = (sesh.password === users[sesh.username]);
-  }
-  return loginStatus;
-}
-
 /* GET routes */
 router.get('/', function(req, res, next) {
-  var loginStatus = checkLoginStatus(req);
+  var loginStatus = users.checkLogin(req.session);
   res.render('index', { title: 'Index', currentpage: '/index', loggedIn: loginStatus });
 });
 
 router.get('/playwithmolecules', function(req, res, next) {
-  var loginStatus = checkLoginStatus(req);
+  var loginStatus = users.checkLogin(req.session);
   res.render('playWithMolecules', { title: 'Play With Molecules', currentpage: '/playwithmolecules', loggedIn: loginStatus });
 });
 
 router.get('/createaccount', function(req, res, next) {
-  var loginStatus = checkLoginStatus(req);
+  var loginStatus = users.checkLogin(req.session);
   res.render('createAccount', { title: 'Create An Account', currentpage: '/createaccount', loggedIn: loginStatus });
 });
 
 router.get('/login', function(req, res, next) {
-  sesh = req.session;
-  if (sesh.username && sesh.password === users[sesh.username]) {
+  if (users.checkLogin(req.session)) {
     //session.store.destroy(req.sessionID);
     req.session.destroy(); // TODO: needs err callback
     req.sessionStore.destroy(req.sessionID);
@@ -41,6 +29,27 @@ router.get('/login', function(req, res, next) {
     window.location = "/" </script>')
   } else {
   res.render('logIn', { title: 'Log In', currentpage: '/login', message: '' });
+  }
+});
+
+router.get('/myaccauth', function(req, res, next) {
+  var permission = '';
+  if (req.session.username) {
+    permission = users.getUser(req.session.username).permission || '';
+  }
+  switch(permission) {
+    case 'author':
+      res.redirect('/author/');
+      break;
+    case 'sitemanager':
+      res.redirect('/sitemanager/');
+      break;
+    case 'globalmanager':
+      res.redirect('/globaladmin/');
+      break;
+    default:
+      res.send('<script> window.alert("You are not logged in"); \
+        window.history.back(); </script>');
   }
 });
 
@@ -57,11 +66,19 @@ router.post('/playwithmolecules', function(req, res, next) {
 router.post('/createaccount', function(req, res, next) {
   // Do stuff!
   // res.send('<h3>The site is not accepting applications at this time.\n')
-  sesh = req.session;
   if (req.body.password === req.body.password2) {
-    sesh.username = req.body.username;
-    sesh.password = req.body.password;
-    users[sesh.username] = sesh.password;
+    req.session.username = req.body.username;
+    req.session.password = req.body.password;
+    var user = { permission: req.body.permission,
+                  username: req.body.username,
+                  email: req.body.email,
+                  firstname: req.body.firstname,
+                  lastname: req.body.lastname,
+                  phone: req.body.phonenumber,
+                  affiliation: req.body.affiliation,
+                  password: req.body.password };
+    console.log(user);
+    users.addUser(user);
     res.send('<script> window.alert("Thank you for signing up with MolePlay!"); window.location = "/"; </script>');
   } else {
     res.send('<script> window.alert("Passwords do not match!"); \
@@ -70,14 +87,13 @@ router.post('/createaccount', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-  sesh = req.session;
-  if (users[req.body.username] === req.body.password) {
-    sesh.username = req.body.username;
-    sesh.password = req.body.password;
+  if (users.getUser(req.body.username).password === req.body.password) {
+    req.session.username = req.body.username;
+    req.session.password = req.body.password;
     res.send('<script> window.alert("Welcome back to MolePlay!"); \
       window.location = "/"; </script>');
   } else {
-    res.send('<script> window.alert("Username or password does not match any known user\nPlease try again"); </script>');
+    res.send('<script> window.alert("Username or password does not match any known user\\nPlease try again"); window.history.back(); </script>');
   }
 });
 

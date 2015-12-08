@@ -1,26 +1,40 @@
 extends layout
 block scripts
-  script(src='/js/tables.js')
-  
+  script(src='/js/playlists.js')
+  script(type="text/javascript").
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+
+    function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+      ev.preventDefault();
+      var data = ev.dataTransfer.getData("text");
+      ev.target.appendChild(document.getElementById(data));
+    }
+
 block content
   h1 Create Playlist
   form.form-horizontal
     .form-group
       label.col-md-4.control-label Playlist Name
       .col-md-4
-        input.form-control.required#playlistname(type='text', placeholder='Playlist Name', name='playlistname')
+        input.form-control.required#name(type='text', placeholder='Playlist Name', name='playlistname')
     .form-group
       label.col-md-4.control-label Playlist
       .col-md-4
-        table#playlist
-          th Molecule
-          th Author
-          th
-
-  table#mols(style="width:600px; margin-left: calc(50% - 300px) ")
-    th Molecule
-    th Author
-    th
+        #playlist(ondrop="drop(event)" ondragover="allowDrop(event)" style="width:400px;height:200px;display:inline-block")
+    .form-group
+      label.col-md-4.control-label Molecules
+      .col-md-4
+        #mols(style="width:400px; height:200px;" ondrop="drop(event)" ondragover="allowDrop(event)")
+    .form-group
+      label.col-md-4.control-label Submit
+      .col-md-4
+        button.btn.btn-primary(type="submit" onclick="createPlaylist()") Submit
 
   script(type="text/javascript").
     populateMolecules();

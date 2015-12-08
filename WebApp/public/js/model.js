@@ -2,7 +2,7 @@ var pg = require('pg');
 var db = require('./db_config');
 var conString = "postgres://" + db.username + ":" + db.password + "@localhost/moleplay";
 
-// cb gets (undefined,true) on success, (err,undefined) on failure 
+// cb gets (undefined,true) on success, (err,undefined) on failure
 // username - string
 // pass - string
 // fname - string
@@ -18,7 +18,7 @@ function addUser(username, pass, fname, lname, email, affil, phone, cb){
     if (err){
       return console.error("error connecting to the database", err);
     }
-    client.query("INSERT INTO Users (username, pass, fname, lname, email, affil, phone) VALUES ($1,$2,$3,$4,$5,$6,$7)", [username,pass,fname,lname,email,affil,phone], function(err, result){  
+    client.query("INSERT INTO Users (username, pass, fname, lname, email, affil, phone) VALUES ($1,$2,$3,$4,$5,$6,$7)", [username,pass,fname,lname,email,affil,phone], function(err, result){
       done();{
         if (err){
           return console.error("error adding the new user " + username, err);
@@ -30,7 +30,7 @@ function addUser(username, pass, fname, lname, email, affil, phone, cb){
   });
 }
 
-// cb gets (undefined,true) on success, (err,undefined) on failure 
+// cb gets (undefined,true) on success, (err,undefined) on failure
 // username - string
 // password - string
 // cb - function(error, result)
@@ -55,7 +55,7 @@ function isValidLogin(username, password, cb){
   });
 }
 
-// cb gets (undefined,molecule) on success, (err,undefined) on failure 
+// cb gets (undefined,molecule) on success, (err,undefined) on failure
 // name - string
 // cb - function(error,result)
 function getMoleculeByName(name, cb){
@@ -79,7 +79,7 @@ function getMoleculeByName(name, cb){
   });
 }
 
-// cb gets (undefined,true) on success, (err,undefined) on failure 
+// cb gets (undefined,true) on success, (err,undefined) on failure
 // uid - int (userId to promote)
 // desiredRole - int (role to be given)
 // cb - function(error, result)
@@ -187,31 +187,36 @@ function getPlaylistById(pid, cb){
 function addMoleculeToPlaylist(pid, mid, cb){
   getPlaylistById(pid,function(oerr, ores){
     var mols = ores.mids === '' ? [] : ores.mids.split(",");
-    if (mols.indexOf(mid) !== -1){
+    if (mols.indexOf(mid) !== -1)
       cb(undefined,true);
-    }
-    else {
-      mols.push(mid);
-      var updated_mols = mols.join(",");
-      pg.connect(conString, function(err, client, done){
-        if (err){
-          return console.error("error connecting to the database", err);
-        }
-        client.query("UPDATE Playlists SET mids = $1 WHERE pid = $2", [updated_mols, pid], function(err, result){
-          done();{
-            if (err){
-              return console.error(("error updating molecule: " + pid), err);
+
+    pg.connect(conString, function(err, client, done){
+      if (err){
+        return console.error("error connecting to the database", err);
+      }
+      else {
+        mols.push(mid);
+        var updated_mols = mols.join(",");
+        pg.connect(conString, function(err, client, done){
+          if (err){
+            return console.error("error connecting to the database", err);
+          }
+          client.query("UPDATE Playlists SET mids = $1 WHERE pid = $2", [updated_mols, pid], function(err, result){
+            done();{
+              if (err){
+                return console.error(("error updating molecule: " + pid), err);
+              }
             }
-          }
-          if (result !== undefined){
-            cb(undefined, true);
-          }
-          else {
-            cb("could not find pid to update: " + pid, undefined);
-          }
+            if (result !== undefined){
+              cb(undefined, true);
+            }
+            else {
+              cb("could not find pid to update: " + pid, undefined);
+            }
+          });
         });
-      });
-    }
+      }
+    });
   });
 }
 

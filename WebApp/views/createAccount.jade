@@ -4,6 +4,18 @@ block content
   h1.page-header Create Account
   form.form-horizontal(method='post')
     .form-group
+      label.col-md-4.control-label Permission Level
+      .col-md-4
+        .controls
+          label.radio-inline Author
+            input.form-control.required#permission1(type="radio", name="permission", value="author", checked)
+          label.radio-inline Site Manager
+            input.form-control.required#permission2(type="radio", name="permission", value="sitemanager")
+          label.radio-inline Global Manager
+            input.form-control.required#permission3(type="radio", name="permission", value="globalmanager")
+
+    br
+    .form-group
       label.col-md-4.control-label Username
       .col-md-4
         input.form-control.required#username(type='text', placeholder='Username', name='username')
