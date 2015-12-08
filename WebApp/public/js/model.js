@@ -322,12 +322,36 @@ function getUserByUsername(username, cb){
   });
 }
 
+
+// cb gets (undefined, permission_int) on success, (err, undefined) on failure
+// uid - int (userid)
+// sid - int (siteid)
+// cb - function(error,result
+// tested
+function getUserSitePermission(uid,sid,cb){
+  pg.connect(conString, function(err, client, done){
+    if (err){
+      return console.error("error connecting to the database", err);
+    }
+    client.query("SELECT * FROM Roles WHERE uid = $1 AND siteid = $2", [uid,sid], function(err, result){
+      done();{
+        if (err){
+          return console.error("error querying for userId,siteId: " + uid + "," + sid, err);
+        }
+      }
+      if (result === undefined || result.rows === undefined || result.rows[0] === undefined)
+        cb("no results from querying for userId,siteId: " + uid + "," + sid, undefined)
+      else 
+        cb(undefined,result.rows[0].permission)
+    });
+  });
+}
+
 // cb gets (undefined, user) on success, (err, undefined) on failure
 // userId - int
 // cb - function(error,result)
 // tested
 function getUserByUserId(userId, cb){
-  results = [];
   pg.connect(conString, function(err, client, done){
     if (err){
       return console.error("error connecting to the database", err);
@@ -335,7 +359,7 @@ function getUserByUserId(userId, cb){
     client.query("SELECT * FROM Users WHERE uid = $1", [userId], function(err, result){
       done();{
         if (err){
-          return console.error("error querying for userId " + userId,err);
+          return console.error("error querying for userId: " + userId,err);
         }
       }
       if (result.rows[0] === undefined) cb("no results from querying for userId: " + userId, undefined)
