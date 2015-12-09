@@ -38,13 +38,13 @@ router.get('/myaccauth', function(req, res, next) {
     permission = users.getUser(req.session.username).permission || '';
   }
   switch(permission) {
-    case 'author':
+    case '1':
       res.redirect('/author/');
       break;
-    case 'sitemanager':
+    case '3':
       res.redirect('/sitemanager/');
       break;
-    case 'globalmanager':
+    case '4':
       res.redirect('/globaladmin/');
       break;
     default:

@@ -1,2 +1,2 @@
-exports.username = "bob";
-exports.password = "postgres";
+exports.username = "postgres";
+exports.password = "";
