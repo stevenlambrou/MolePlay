@@ -1,8 +1,7 @@
 var express = require('express');
 var router  = express.Router();
-var path = require('path');
-var join = require('path').join;
-var users   = require('../middlewares/users.js')
+var multer  = require('multer');
+var users   = require('../middlewares/users.js');
 
 function checkPermission(req) {
   if (req.session && req.session.username) {
@@ -21,7 +20,8 @@ function homepage(req, res){
 
 function uploadMolecule(req, res){
 	console.log("uploaded molecule");
-	
+	console.log(req.files);
+	res.send('<script> window.alert("woo"); window.location = "/"; </script>');
 }
 
 /* GET home page. */
