@@ -1,7 +1,15 @@
 var express = require('express');
 var router  = express.Router();
-var multer  = require('multer');
 var users   = require('../middlewares/users.js');
+var multer  = require('multer');
+var upload  = multer({ storage: multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, 'public/molecules/');
+  },
+  filename: function(req, file, cb) {
+    cb(null, req.body.moleculeName + '.' + file.fieldname)
+  }
+}) });
 
 function checkPermission(req) {
   if (req.session && req.session.username) {
@@ -18,12 +26,6 @@ function homepage(req, res){
   }
 }
 
-function uploadMolecule(req, res){
-	console.log("uploaded molecule");
-	console.log(req.files);
-	res.send('<script> window.alert("woo"); window.location = "/"; </script>');
-}
-
 /* GET home page. */
 router.get('/', homepage);
 
@@ -35,6 +37,11 @@ router.get('/uploadmolecule', function(req, res, next) {
   }
 })
 
-router.post('/uploadmolecule', uploadMolecule);
+var moleFile = upload.fields([{ name: 'xyz', maxCount: 1 }, { name: 'jmol', maxCount: 1 }]);
+router.post('/uploadmolecule', moleFile, function(req, res, next) {
+	console.log("uploaded molecule");
+	console.log(req.files);
+	res.send('<script> window.alert("Submission received!\\nThank you!"); window.location = "/"; </script>');
+});
 
 module.exports = router;
