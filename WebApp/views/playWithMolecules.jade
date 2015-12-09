@@ -1,12 +1,19 @@
 extends layout
 
+block scripts
+  script(type="text/javascript").
+    function change() {
+      var mol = $("#molName").val();
+      console.log(mol);
+      javascript:Jmol.loadFile(jmolApplet0,'$' + mol);
+    }
 block content
   .row
     .col-md-3.col-md-offset-9
       form.form-inline(role='search', method='post')
         .input-group
           label.sr-only search
-          input.form-control(type='text' placeholder='Search', name='search')
+          input.form-control#molName(type='text' placeholder='Search', name='search')
           span.input-group-btn
-            button.btn.btn-default(type='submit') Search
-    script(type="text/javascript" src="http://chemapps.stolaf.edu/jmol/jmol.php?model=acetone&inline").
+            button.btn.btn-default(type='button' onclick='change()') Search
+    script#script(type="text/javascript" src="http://chemapps.stolaf.edu/jmol/jmol.php?model=caffeine&inline").
