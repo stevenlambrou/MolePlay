@@ -16,6 +16,15 @@ block scripts
       ev.target.appendChild(document.getElementById(data));
     }
 
+    function create() {
+      createPlaylist($("name").val(), 1, 25, function(error, result) {
+
+      });
+      addMoleculeToPlaylist(1, 10, function(error, result) {
+
+      });
+    }
+
 block content
   h1 Create Playlist
   form.form-horizontal
@@ -34,7 +43,10 @@ block content
     .form-group
       label.col-md-4.control-label Submit
       .col-md-4
-        button.btn.btn-primary(type="submit" onclick="createPlaylist()") Submit
+        button.btn.btn-primary(type="submit" onclick="create()") Submit
 
   script(type="text/javascript").
     populateMolecules();
+    getPlaylistById(1, function(err, result) {
+      console.log(result);
+    });
