@@ -16,18 +16,9 @@ block scripts
       ev.target.appendChild(document.getElementById(data));
     }
 
-    function create() {
-      createPlaylist($("name").val(), 1, 25, function(error, result) {
-
-      });
-      addMoleculeToPlaylist(1, 10, function(error, result) {
-
-      });
-    }
-
 block content
   h1 Create Playlist
-  form.form-horizontal
+  form.form-horizontal(method="post")
     .form-group
       label.col-md-4.control-label Playlist Name
       .col-md-4
@@ -35,7 +26,7 @@ block content
     .form-group
       label.col-md-4.control-label Playlist
       .col-md-4
-        #playlist(ondrop="drop(event)" ondragover="allowDrop(event)" style="width:400px;height:200px;display:inline-block")
+        #playlist(name="playlist" ondrop="drop(event)" ondragover="allowDrop(event)" style="width:400px;height:200px;display:inline-block")
     .form-group
       label.col-md-4.control-label Molecules
       .col-md-4
