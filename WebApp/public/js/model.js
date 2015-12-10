@@ -1,3 +1,5 @@
+exports = module.exports = {};
+
 var pg = require('pg');
 var db = require('./db_config');
 var conString = "postgres://" + db.username + ":" + db.password + "@localhost/moleplay";
@@ -341,7 +343,7 @@ function getUserSitePermission(uid,sid,cb){
       }
       if (result === undefined || result.rows === undefined || result.rows[0] === undefined)
         cb("no results from querying for userId,siteId: " + uid + "," + sid, undefined)
-      else 
+      else
         cb(undefined,result.rows[0].permission)
     });
   });
@@ -367,3 +369,18 @@ function getUserByUserId(userId, cb){
     });
   });
 }
+
+module.exports = { addUser: addUser,
+                    isValidLogin: isValidLogin,
+                    getMoleculeByName: getMoleculeByName,
+                    promoteUser: promoteUser,
+                    getMoleculesByUsername: getMoleculesByUsername,
+                    createPlaylist: createPlaylist,
+                    getPlaylistById: getPlaylistById,
+                    setUserPermission: setUserPermission,
+                    addMoleculeToPlaylist: addMoleculeToPlaylist,
+                    updatePlaylistOrder: updatePlaylistOrder,
+                    getPendingMolecules: getPendingMolecules,
+                    getUserByUsername: getUserByUsername,
+                    getUserSitePermission: getUserSitePermission,
+                    getUserByUserId: getUserByUserId };
