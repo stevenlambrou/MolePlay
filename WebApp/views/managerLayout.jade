@@ -1,5 +1,22 @@
 extends portalLayout
 
+block scripts
+  script(src='/js/playlists.js')
+  script(type="text/javascript").
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+
+    function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+      ev.preventDefault();
+      var data = ev.dataTransfer.getData("text");
+      ev.target.appendChild(document.getElementById(data));
+    }
+
 block nav
   nav.navbar-default.sidebar(role='navigation', style="margin-top:0px")
     .sidebar-nav.navbar-collapse
@@ -9,6 +26,10 @@ block nav
             i.glyphicon.glyphicon-dashboard
             | &nbsp;Dashboard
         li
+          a(href='/createPlaylist')
+            i.glyphicon.glyphicon-list
+            | &nbsp;Create Playlist
+        li
           a(href='#')
             i.glyphicon.glyphicon-inbox
             | &nbsp;Manage Local Delegates
@@ -16,10 +37,6 @@ block nav
           a(href='#')
             i.glyphicon.glyphicon-alert
             | &nbsp;Resign Site Manager
-        li
-          a(href='#')
-            i.glyphicon.glyphicon-log-out
-            | &nbsp;Logout
 
   #page-wrapper(style="min-height: 582px;")
     block content

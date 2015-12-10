@@ -1,6 +1,8 @@
 doctype html
 html
   head
+    script(src='http://code.jquery.com/jquery-1.9.1.js')
+    script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
     link(href='/stylesheets/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
     link(href='/stylesheets/font-awesome/css/font-awesome.css', rel='stylesheet')
     link(href='/stylesheets/style.css', rel='stylesheet')
@@ -15,7 +17,15 @@ html
           #navbar.navbar-collapse
             ul.nav.navbar-nav.navbar-right
               li
-                a(href='/myaccauth') My Account
+                a(href='/myaccauth')
+                  i.glyphicon.glyphicon-user
+                  |&nbsp;My Account
               li
-                a(href='/author/uploadmolecule') Upload a Molecule
+                a(href='/author/uploadMolecule')
+                  i.glyphicon.glyphicon-cloud-upload
+                  |&nbsp;Upload Molecule
+              li
+                a(href='/logout')
+                  i.glyphicon.glyphicon-log-out
+                  | &nbsp;Logout
     block nav

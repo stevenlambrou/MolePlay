@@ -11,7 +11,7 @@ function checkPermission(req) {
 
 function homepage(req, res, next) {
   if (checkPermission(req)) {
-    res.render('managerLayout');
+    res.render('manageMySite');
   } else {
     res.send('<script> window.alert("You do not have permission to view this page"); window.location = "/"; </script>');
   }
