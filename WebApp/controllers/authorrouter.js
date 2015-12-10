@@ -37,11 +37,10 @@ router.get('/uploadmolecule', function(req, res, next) {
   }
 })
 
-var moleFile = upload.fields([{ name: 'xyz', maxCount: 1 }, { name: 'jmol', maxCount: 1 }]);
+var moleFile = upload.fields([{ name: 'xyz', maxCount: 1 }, { name: 'pdb', maxCount: 1 }]);
 router.post('/uploadmolecule', moleFile, function(req, res, next) {
-	console.log("uploaded molecule");
 	console.log(req.files);
-	res.send('<script> window.alert("Submission received!\\nThank you!"); window.location = "/"; </script>');
+	res.send('<script> window.alert("Submission received.\\nThank you!"); window.location = "/"; </script>');
 });
 
 module.exports = router;
