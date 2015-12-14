@@ -54,13 +54,13 @@ router.get('/myaccauth', function(req, res, next) {
 });
 
 router.get('/devsitemap', function(req, res, next) {
-  res.render('devsitemap', { title: 'devsitemap', currentpage: '/devsitemap' });
+  res.render('devsitemap', { title: 'devsitemap', currentpage: '/devsitemap', loggedIn: users.checkLogin(req.session) });
 });
 
 
 /* POST routes */
 router.post('/playwithmolecules', function(req, res, next) {
-  res.render('playWithMolecules', { title: 'Play With ' + req.body.search, currentpage: '/playwithmolecules' });
+  res.render('playWithMolecules', { title: 'Play With ' + req.body.search, currentpage: '/playwithmolecules', loggedIn: users.checkLogin(req.session) });
 });
 
 router.post('/createaccount', function(req, res, next) {
@@ -79,7 +79,7 @@ router.post('/createaccount', function(req, res, next) {
                   password: req.body.password };
     console.log(user);
     users.addUser(user);
-    res.send('<script> window.alert("Thank you for signing up with MolePlay!"); window.location = "/"; </script>');
+    res.redirect('/');
   } else {
     res.send('<script> window.alert("Passwords do not match!"); \
       window.history.back(); </script>');
@@ -90,8 +90,7 @@ router.post('/login', function(req, res, next) {
   if (users.getUser(req.body.username).password === req.body.password) {
     req.session.username = req.body.username;
     req.session.password = req.body.password;
-    res.send('<script> window.alert("Welcome back to MolePlay!"); \
-      window.location = "/"; </script>');
+    res.redirect('/');
   } else {
     res.send('<script> window.alert("Username or password does not match any known user\\nPlease try again"); window.history.back(); </script>');
   }

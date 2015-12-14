@@ -27,6 +27,9 @@ users['globaladmin'] = { permission: '4',
                   affiliation: 'Veridian Dynamics',
                   password: 'test' };
 
+var playlists = [];
+var molecules = [];
+
 function checkLogin (sesh) {
   var loginStatus = false;
   if (sesh.username) {
@@ -36,13 +39,34 @@ function checkLogin (sesh) {
 }
 
 function addUser (userObj) {
-  users[userObj.username] = userObj
+  users[userObj.username] = userObj;
 }
 
 function getUser (username) {
   return(users[username]);
 }
 
+function addMolecule (mole) {
+  molecules.push(mole);
+}
+
+function getMolecules () {
+  return(molecules);
+}
+
+function addPlaylist (play) {
+  playlists[play.name] = play;
+}
+
+function getPlaylists () {
+  return(playlists);
+}
+
 module.exports = { checkLogin: checkLogin,
                     addUser: addUser,
-                    getUser: getUser };
+                    getUser: getUser,
+                    addMolecule: addMolecule,
+                    getMolecules: getMolecules,
+                    addPlaylist: addPlaylist,
+                    getPlaylists: getPlaylists
+};

@@ -7,19 +7,23 @@ block nav
         li
           a(href='/manageMySite')
             i.glyphicon.glyphicon-dashboard
-              Dashboard
+              | &nbsp;Dashboard
+        li
+          a(href='/sitemanager/createplaylist')
+            i.glyphicon.glyphicon-plus(style="padding-right: 8px;")
+              | &nbsp;Create Playlist
         li
           a(href='#')
             i.glyphicon.glyphicon-inbox
-              Manage Local Delegates
+              | &nbsp;Manage Local Delegates
         li
           a(href='#')
             i.glyphicon.glyphicon-alert
-              Resign Site Manager
+              | &nbsp;Resign Site Manager
         li
           a(href='#')
             i.glyphicon.glyphicon-log-out
-              Logout
+              | &nbsp;Logout
 
   #page-wrapper(style="min-height: 582px;")
     block content

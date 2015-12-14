@@ -353,7 +353,7 @@ function getUserSitePermission(uid,sid,cb){
 // userId - int
 // cb - function(error,result)
 // tested
-function getUserByUserId(userId, cb){
+function getUserByUserId(userId, cb) {
   pg.connect(conString, function(err, client, done){
     if (err){
       return console.error("error connecting to the database", err);

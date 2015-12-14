@@ -18,25 +18,28 @@ function checkPermission(req) {
   return(false);
 }
 
-function homepage(req, res){
+/* GET requests */
+router.get('/', function(req, res, next) {
   if (checkPermission(req)) {
-	  res.render('portalLayout', { title: 'My Account' });
+	  res.render('portalLayout', { title: 'My Account', loggedIn: users.checkLogin(req.session) });
   } else {
     res.send('<script> window.alert("You do not have permission to view this page"); window.location = "/"; </script>');
   }
-}
-
-/* GET home page. */
-router.get('/', homepage);
+});
 
 router.get('/uploadmolecule', function(req, res, next) {
   if (checkPermission(req)) {
-    res.render('submitMolecule');
+    res.render('submitMolecule', { loggedIn: users.checkLogin(req.session) });
   } else {
     res.send('<script> window.alert("You do not have permission to view this page"); window.location = "/"; </script>');
   }
-})
+});
 
+router.get('/managemysite', function(req, res, next) {
+  res.render('manageMySite', { loggedIn: users.checkLogin(req.session) });
+});
+
+/* POST requests */
 var moleFile = upload.fields([{ name: 'xyz', maxCount: 1 }, { name: 'pdb', maxCount: 1 }]);
 router.post('/uploadmolecule', moleFile, function(req, res, next) {
 	console.log(req.files);

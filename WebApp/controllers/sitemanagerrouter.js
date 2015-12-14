@@ -21,7 +21,15 @@ function homepage(req, res, next) {
 router.get('/', homepage);
 
 router.get('/playwithmolecules', function(req, res, next) {
-  res.render('playWithMolecules');
+  res.render('playWithMolecules', { loggedIn: users.checkLogin(req.session) });
+});
+
+router.get('/createplaylist', function(req, res, next) {
+  res.render('createPlaylist', { loggedIn: users.checkLogin(req.session), molecules: users.getMolecules() });
+});
+
+router.post('/createplaylist', function(req, res, next) {
+  // Store molecules in playlist array
 });
 
 module.exports = router;
