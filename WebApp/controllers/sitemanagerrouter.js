@@ -24,4 +24,8 @@ router.get('/playwithmolecules', function(req, res, next) {
   res.render('playWithMolecules');
 });
 
+router.get('/createPlaylist', function(req, res, next) {
+  res.render('createPlaylist');
+});
+
 module.exports = router;
