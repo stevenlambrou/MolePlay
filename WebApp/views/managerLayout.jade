@@ -1,11 +1,28 @@
 extends portalLayout
 
+block scripts
+  script(src='/js/playlists.js')
+  script(type="text/javascript").
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+
+    function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+      ev.preventDefault();
+      var data = ev.dataTransfer.getData("text");
+      ev.target.appendChild(document.getElementById(data));
+    }
+
 block nav
   nav.navbar-default.sidebar(role='navigation', style="margin-top:0px")
     .sidebar-nav.navbar-collapse
       ul.nav.in#side-menu
         li
-          a(href='/manageMySite')
+          a(href='#')
             i.glyphicon.glyphicon-dashboard
               | &nbsp;Dashboard
         li

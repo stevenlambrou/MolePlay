@@ -11,7 +11,7 @@ function checkPermission(req) {
 
 function homepage(req, res, next) {
   if (checkPermission(req)) {
-    res.render('managerLayout');
+    res.render('manageMySite');
   } else {
     res.send('<script> window.alert("You do not have permission to view this page"); window.location = "/"; </script>');
   }
@@ -30,6 +30,10 @@ router.get('/createplaylist', function(req, res, next) {
 
 router.post('/createplaylist', function(req, res, next) {
   // Store molecules in playlist array
+});
+
+router.get('/createPlaylist', function(req, res, next) {
+  res.render('createPlaylist');
 });
 
 module.exports = router;
