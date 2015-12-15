@@ -1,26 +1,30 @@
 extends layout
 
 block content
-  h1.page-header Upload Molecule
-  form.form-horizontal(method="post", enctype="multipart/form-data")
-    .form-group
-      label.col-md-4.control-label(for="moleculeName") Molecule Name
-      .col-md-4
-        input.form-control#moleculeName(type='text', placeholder='Molecule', name='moleculeName')
-    .form-group
-      label.col-md-4.control-label(for="uploadScript") XYZ Coordinate File
-      .col-md-4
-        input#uploadScript(type='file', name='xyz')
-    .form-group
-      label.col-md-4.control-label(for="uploadJmol") Jmol Script File
-      .col-md-4
-        input#uploadJmol(type='file', name='pdb')
-    .form-group
-      label.col-md-4.control-label(for="affiliation") Affiliation
-      .col-md-4
-        input.form-control#affiliation(type='text', placeholder='Affiliation', name='affiliation')
-    .form-group
-      label.col-md-4.control-label(for="comments") Additional Information
-      .col-md-4
-        textarea.form-control#comments(type='text', name='comments')
-        button.btn.btn-default(type='submit', style="margin-top:15px;") Upload
+  .container
+    h1.page-header Upload Molecule
+    form.form-horizontal(method="post", enctype="multipart/form-data")
+      .form-group
+        label.col-md-4.control-label(for="moleculeName") Molecule Name
+        .col-md-4
+          input.form-control#moleculeName(type='text', placeholder='Molecule', name='moleculeName')
+      .form-group
+        label.col-md-4.control-label(for="uploadScript") XYZ Coordinate File
+        .col-md-4
+          input#uploadScript(type='file', name='xyz')
+      .form-group
+        label.col-md-4.control-label(for="uploadJmol") Jmol Script File
+        .col-md-4
+          input#uploadJmol(type='file', name='pdb')
+      .form-group
+        label.col-md-4.control-label(for="affiliation") Affiliation
+        .col-md-4
+          input.form-control#affiliation(type='text', placeholder='Affiliation', name='affiliation')
+      .form-group
+        label.col-md-4.control-label(for="comments") Additional Information
+        .col-md-4
+          textarea.form-control#comments(type='text', name='comments')
+          button.btn.btn-default(type='submit', style="margin-top:15px;")
+            span
+              | Upload &nbsp;
+            i.fa.fa-upload

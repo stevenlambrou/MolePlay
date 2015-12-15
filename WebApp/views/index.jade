@@ -1,11 +1,25 @@
 extends layout
 
+block scripts
+  link(href="stylesheets/startbootstrap-landing-page-1.0.5/css/landing-page.css", rel='stylesheet')
+  link(href="stylesheets/startbootstrap-landing-page-1.0.5/font-awesome/css/font-awesome.min.css", rel='stylesheet')
 block content
-  .jumbotron(style="background:#f8f8f8;")
-    img(src='/molecule.png' style="float:left;")
-    h1 Molecular Playground
-    br
-    h4
-      a(href='/playwithmolecules') Play with molecules
-      text &nbsp;or get started by&nbsp;
-      a(href='/createaccount') creating an account!
+  .intro-header
+    .container
+      .row
+        .col-lg-12
+          .intro-message
+            h1 Molecular Playground
+            h3 Play with molecules online!
+            hr.intro-divider
+            ul.list-inline.intro-social-buttons
+              li
+                a.btn.btn-lg.btn-danger(href='/playwithmolecules')
+                  i.fa.fa-picture-o
+                  span
+                    &nbsp;Play with Molecules
+              li
+                a.btn.btn-danger.btn-lg(href='/createaccount')
+                  i.fa.fa-user
+                  span
+                    &nbsp;Create an Account

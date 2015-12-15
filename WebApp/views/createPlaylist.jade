@@ -17,24 +17,28 @@ block scripts
     }
 
 block content
-  h1 Create Playlist
-  form.form-horizontal(method="post")
-    .form-group
-      label.col-md-4.control-label Playlist Name
-      .col-md-4
-        input.form-control.required#name(type='text', placeholder='Playlist Name', name='playlistname')
-    .form-group
-      label.col-md-4.control-label Playlist
-      .col-md-4
-        #playlist(name="playlist" ondrop="drop(event)" ondragover="allowDrop(event)" style="width:400px;height:200px;display:inline-block")
-    .form-group
-      label.col-md-4.control-label Molecules
-      .col-md-4
-        #mols(style="width:400px; height:200px;" ondrop="drop(event)" ondragover="allowDrop(event)")
-    .form-group
-      label.col-md-4.control-label Submit
-      .col-md-4
-        button.btn.btn-primary(type="submit" onclick="create()") Submit
+  .container
+    h1.page-header Create Playlist
+    form.form-horizontal(method="post")
+      .form-group
+        label.col-md-4.control-label Playlist Name
+        .col-md-4
+          input.form-control.required#name(type='text', placeholder='Playlist Name', name='playlistname')
+      .form-group
+        label.col-md-4.control-label Playlist
+        .col-md-4
+          #playlist(name="playlist" ondrop="drop(event)" ondragover="allowDrop(event)" style="width:400px;height:200px;display:inline-block")
+      .form-group
+        label.col-md-4.control-label Molecules
+        .col-md-4
+          #mols(style="width:400px; height:200px;" ondrop="drop(event)" ondragover="allowDrop(event)")
+      .form-group
+        label.col-md-4.control-label Submit
+        .col-md-4
+          button.btn.btn-primary(type="submit" onclick="create()")
+            span
+              | Submit &nbsp;
+            i.fa.fa-check
 
-  script(type="text/javascript").
-    populateMolecules();
+    script(type="text/javascript").
+      populateMolecules();
