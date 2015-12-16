@@ -6,12 +6,13 @@ html
     link(href='/stylesheets/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
     link(href='/stylesheets/font-awesome/css/font-awesome.css', rel='stylesheet')
     link(href='/stylesheets/style.css', rel='stylesheet')
+    link(href="stylesheets/startbootstrap-landing-page-1.0.5/css/landing-page.css", rel='stylesheet')
     script(src="/stylesheets/bootstrap/js/transition.js")
     script(src="/stylesheets/bootstrap/js/collapse.js")
     block scripts
 
   body(style="margin-top:20px;")
-    nav.navbar.navbar-default.topnav.navbar-fixed-top(role='navigation')
+    nav.navbar.navbar-default.topnav.navbar-fixed-top(role='navigation' style="z-index:12345")
       .container-fluid
         .navbar-header
           button(type="button" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false").navbar-toggle.collapsed
@@ -50,18 +51,10 @@ html
 
     block content
 
-    .content-section-a
-      .row
-        .col-lg-12
-          .container
-            ol.breadcrumb
-              li
-                a(href='/') Home
-              if title !== 'Index'
-                li
-                  a(href=currentpage) #{title}
-
-            footer
-              p ThreeTwenty 2015
-                span.glyphicon.glyphicon-copyright-mark
-              a(href='/devsitemap') Site Map (Dev)
+    footer
+      .container
+        .row
+          .col-lg-12
+            i.fa.fa-copyright
+            span
+              | &nbsp;ThreeTwenty 2015

@@ -7,14 +7,16 @@ block scripts
       javascript:Jmol.loadFile(jmolApplet0,'$' + mol);
     }
 block content
-  .row
-    .col-md-3.col-md-offset-9
-      form.form-inline(role='search')
-        .input-group
-          label.sr-only search
-          input.form-control#molName(type='text' placeholder='Search', name='search')
-          span.input-group-btn
-            button.btn.btn-default(type='button' onclick='change()') Search
-  .row
-    .col-md-offset-3
-      script#script(type="text/javascript" src="http://chemapps.stolaf.edu/jmol/jmol.php?model=caffeine&inline").
+  h1.page-header
+  .container
+    .row
+      .col-md-6.col-md-offset-3
+        form.form-inline(role='search')
+          .input-group(style="width:100%")
+            input.form-control#molName(type='text' placeholder='Molecule Name', name='search')
+            span.input-group-btn
+              button.btn.btn-primary(type='button' onclick='change()')
+                i.fa.fa-search
+    .row
+      #div(style="margin-left:calc(50% - 300px)")
+        script#script(type="text/javascript" src="http://chemapps.stolaf.edu/jmol/jmol.php?model=caffeine&inline").

@@ -24,6 +24,14 @@ router.get('/playwithmolecules', function(req, res, next) {
   res.render('playWithMolecules', { loggedIn: users.checkLogin(req.session) });
 });
 
+router.get('/manageSchedule', function(req, res, next) {
+  res.render('manageSchedule');
+});
+
+router.get('/viewPlaylists', function(req, res, next) {
+  res.render('viewPlaylists');
+});
+
 router.get('/createplaylist', function(req, res, next) {
   res.render('createPlaylist', { loggedIn: users.checkLogin(req.session), molecules: users.getMolecules() });
 });
