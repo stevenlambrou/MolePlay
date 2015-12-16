@@ -30,6 +30,9 @@ router.get('/createplaylist', function(req, res, next) {
 
 router.post('/createplaylist', function(req, res, next) {
   // Store molecules in playlist array
+  console.log(req.body);
+  var playlist = { title: req.body.playlistname, molecules: req.body.playlist };
+  res.render('createPlaylist', { loggedIn: users.checkLogin(req.session), molecules: users.getMolecules() });
 });
 
 router.get('/createPlaylist', function(req, res, next) {

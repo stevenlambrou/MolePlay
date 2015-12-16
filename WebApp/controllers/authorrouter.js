@@ -43,6 +43,8 @@ router.get('/managemysite', function(req, res, next) {
 var moleFile = upload.fields([{ name: 'xyz', maxCount: 1 }, { name: 'pdb', maxCount: 1 }]);
 router.post('/uploadmolecule', moleFile, function(req, res, next) {
 	console.log(req.files);
+	var usr = users.getUser(req.session.username);
+	users.addMolecule({ name: req.body.moleculeName, author: usr.firstname + " " + usr.lastname })
 	res.send('<script> window.alert("Submission received.\\nThank you!"); window.location = "/"; </script>');
 });
 

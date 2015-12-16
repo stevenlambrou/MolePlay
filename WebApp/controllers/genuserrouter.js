@@ -90,7 +90,7 @@ router.post('/login', function(req, res, next) {
   if (users.getUser(req.body.username).password === req.body.password) {
     req.session.username = req.body.username;
     req.session.password = req.body.password;
-    res.redirect('/');
+    res.redirect('/myaccauth');
   } else {
     res.send('<script> window.alert("Username or password does not match any known user\\nPlease try again"); window.history.back(); </script>');
   }
