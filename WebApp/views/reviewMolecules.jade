@@ -1,5 +1,12 @@
 extends adminLayout
 
+block scripts
+  script(type="text/javascript").
+    function removeRow(row) {
+        $(row).remove();
+      }
+
+
 block content
   .row
     .col-md-12
@@ -7,50 +14,80 @@ block content
         .panel-heading
           h Un-Approved Molecules
         .panel-body
-          table.table.table-striped
+          table.table.table-striped#tbl
             thead
               tr
                 th Molecule
+                th Files
                 th Author
                 th Date Submitted
                 th Decision
             tbody
-              tr
+              tr#first
                 td
                   | Glucose
+                td
+                  a(href="#") Glucose.zip
                 td
                   | John Snow
                 td
                   | 12/09/2015
                 td
-                  a.btn.btn-primary(style="width:100px")
-                    | Approve
+                  button.btn.btn-primary(style="width:100px" onclick="removeRow('#first')")
+                    i.fa.fa-check
+                    | &nbsp;Approve
                   &nbsp;
-                  a.btn.btn-danger(style="width:100px")
-                    | Reject
-              tr
+                  button.btn.btn-danger(style="width:100px" onclick="removeRow('#first')")
+                    i.fa.fa-times
+                    | &nbsp;Reject
+              tr#second
+                td
+                  | Adenosine Di-Phosphate
+                td
+                  a(href="#") Adenosine_Di-Phosphate.zip
+                td
+                  | Jar Jar Binks
+                td
+                  | 12/10/2015
+                td
+                  button.btn.btn-primary(style="width:100px" onclick="removeRow('#second')")
+                    i.fa.fa-check
+                    | &nbsp;Approve
+                  &nbsp;
+                  button.btn.btn-danger(style="width:100px" onclick="removeRow('#second')")
+                    i.fa.fa-times
+                    | &nbsp;Reject
+              tr#third
                 td
                   | Adenosine Tri-Phosphate
+                td
+                  a(href="#") Adenosine_Tri-Phosphate.zip
                 td
                   | Kylo Ren
                 td
                   | 12/10/2015
                 td
-                  a.btn.btn-primary(style="width:100px")
-                    | Approve
+                  button.btn.btn-primary(style="width:100px" onclick="removeRow('#third')")
+                    i.fa.fa-check
+                    | &nbsp;Approve
                   &nbsp;
-                  a.btn.btn-danger(style="width:100px")
-                    | Reject
-              tr
+                  button.btn.btn-danger(style="width:100px" onclick="removeRow('#third')")
+                    i.fa.fa-times
+                    | &nbsp;Reject
+              tr#fourth
                 td
                   | Adderall
+                td
+                  a(href="#") Adderall.zip
                 td
                   | Bart Simpson
                 td
                   | 12/12/2015
                 td
-                  a.btn.btn-primary(style="width:100px")
-                    | Approve
+                  button.btn.btn-primary(style="width:100px" onclick="removeRow('#fourth')")
+                    i.fa.fa-check
+                    | &nbsp;Approve
                   &nbsp;
-                  a.btn.btn-danger(style="width:100px")
-                    | Reject
+                  button.btn.btn-danger(style="width:100px" onclick="removeRow('#fourth')")
+                    i.fa.fa-times
+                    | &nbsp;Reject
