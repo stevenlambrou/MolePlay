@@ -6,7 +6,7 @@ html
     link(href='/stylesheets/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
     link(href='/stylesheets/font-awesome/css/font-awesome.css', rel='stylesheet')
     link(href='/stylesheets/style.css', rel='stylesheet')
-    link(href="stylesheets/startbootstrap-landing-page-1.0.5/css/landing-page.css", rel='stylesheet')
+    link(href="/stylesheets/startbootstrap-landing-page-1.0.5/css/landing-page.css", rel='stylesheet')
     script(src="/stylesheets/bootstrap/js/transition.js")
     script(src="/stylesheets/bootstrap/js/collapse.js")
     block scripts
@@ -20,29 +20,31 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand(href='/') Molecular Playground
+          a.navbar-brand(href='/')
+            img(src="/molecule.png" style="height:18px; display:inline-block")
+            | &nbsp;Molecular Playground
         .navbar-collapse.collapse#navbar-collapse-1
           ul.nav.navbar-nav
             li
               a(href='/playwithmolecules') Play With Molecules
           ul.nav.navbar-nav.navbar-right
-            li
-              a(href='/createaccount')
-                i.fa.fa-user-plus
-                span
-                  &nbsp;Create Account
-            li
-              a(href='/myaccauth')
-                i.fa.fa-user
-                span
-                  &nbsp;My Account
             if loggedIn
+              li
+                a(href='/myaccauth')
+                  i.fa.fa-user
+                  span
+                    &nbsp;My Account
               li
                 a(href='/login')
                   i.fa.fa-sign-out
                   span
                     &nbsp;Log Out
             else
+              li
+                a(href='/createaccount')
+                  i.fa.fa-user-plus
+                  span
+                    &nbsp;Create Account
               li
                 a(href='/login')
                   i.fa.fa-sign-in

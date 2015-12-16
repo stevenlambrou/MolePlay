@@ -1,4 +1,4 @@
-extends layout
+extends managerLayout
 block scripts
   script(src='/js/playlists.js')
   script(type="text/javascript").
@@ -21,19 +21,19 @@ block content
     h1.page-header Create Playlist
     form.form-horizontal(method="post")
       .form-group
-        label.col-md-4.control-label Playlist Name
+        label.sr-only.control-label Playlist Name
         .col-md-4
           input.form-control.required#name(type='text', placeholder='Playlist Name', name='playlistname')
       .form-group
-        label.col-md-4.control-label Playlist
+        label.sr-only.control-label Playlist
         .col-md-4
           #playlist(name="playlist" ondrop="drop(event)" ondragover="allowDrop(event)" style="width:400px;height:200px;display:inline-block")
       .form-group
-        label.col-md-4.control-label Molecules
+        label.sr-only.control-label Molecules
         .col-md-4
           #mols(style="width:400px; height:200px;" ondrop="drop(event)" ondragover="allowDrop(event)")
       .form-group
-        label.col-md-4.control-label Submit
+        label.sr-only.control-label Submit
         .col-md-4
           button.btn.btn-primary(type="submit" onclick="create()")
             span
