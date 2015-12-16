@@ -7,4 +7,50 @@ block content
         .panel-heading
           h Un-Approved Molecules
         .panel-body
-          T Table goes here
+          table.table.table-striped
+            thead
+              tr
+                th Molecule
+                th Author
+                th Date Submitted
+                th Decision
+            tbody
+              tr
+                td
+                  | Glucose
+                td
+                  | John Snow
+                td
+                  | 12/09/2015
+                td
+                  a.btn.btn-primary(style="width:100px")
+                    | Approve
+                  &nbsp;
+                  a.btn.btn-danger(style="width:100px")
+                    | Reject
+              tr
+                td
+                  | Adenosine Tri-Phosphate
+                td
+                  | Kylo Ren
+                td
+                  | 12/10/2015
+                td
+                  a.btn.btn-primary(style="width:100px")
+                    | Approve
+                  &nbsp;
+                  a.btn.btn-danger(style="width:100px")
+                    | Reject
+              tr
+                td
+                  | Adderall
+                td
+                  | Bart Simpson
+                td
+                  | 12/12/2015
+                td
+                  a.btn.btn-primary(style="width:100px")
+                    | Approve
+                  &nbsp;
+                  a.btn.btn-danger(style="width:100px")
+                    | Reject

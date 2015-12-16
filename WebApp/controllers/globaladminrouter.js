@@ -17,6 +17,11 @@ function homepage(req, res, next) {
   }
 }
 
+router.get('/reviewMolecules', function(req, res, next) {
+  res.render('reviewmolecules');
+});
+
+
 /* GET routes */
 router.get('/', homepage);
 

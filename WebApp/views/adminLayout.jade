@@ -6,27 +6,23 @@ block nav
       ul.nav.in#side-menu
         li
           a(href='/adminportal')
-            i.glyphicon.glyphicon-dashboard
+            i.fa.fa-dashboard
                Dashboard
         li
           a(href='/reviewsitemanagerapplications')
-            i.glyphicon.glyphicon-inbox
+            i.fa.fa-inbox
                Review Applications
         li
           a(href='#')
-            i.glyphicon.glyphicon-list-alt
+            i.fa.fa-users
                Manage Users
         li
-          a(href='/reviewmolecules')
-            i.glyphicon.glyphicon-list-alt
+          a(href='/globaladmin/reviewmolecules')
+            i.fa.fa-list
                Review Molecules
         li
           a(href='#')
-            i.glyphicon.glyphicon-alert
+            i.fa.fa-warning
                Resign Global Admin
-        li
-          a(href='#')
-            i.glyphicon.glyphicon-log-out
-               Logout
   #page-wrapper(style="min-height: 582px;")
     block content
