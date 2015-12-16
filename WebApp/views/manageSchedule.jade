@@ -1,0 +1,268 @@
+extends managerLayout
+
+block scripts
+  link(href='/stylesheets/style.css', rel='stylesheet')
+  script(src='/js/playlists.js')
+  script(type="text/javascript").
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+
+    function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+      ev.preventDefault();
+      var data = ev.dataTransfer.getData("text");
+      ev.target.appendChild(document.getElementById(data));
+    }
+
+block content
+  .row
+    .col-md-12
+      .panel.panel-default(style="margin-top:15px;")
+        .panel-heading
+          h Schedule
+        .panel-body
+          .times(style="width:100%;height:300px;display:inline-block;")
+            br
+            table.table.table-striped
+              thead
+                tr
+                  th A.M.
+                  th 1:00
+                  th 2:00
+                  th 3:00
+                  th 4:00
+                  th 5:00
+                  th 6:00
+                  th 7:00
+                  th 8:00
+                  th 9:00
+                  th 10:00
+                  th 11:00
+                  th 12:00 p.m.
+              tbody
+                tr(ondrop="drop(event)" ondragover="allowDrop(event)")
+                  th Sunday
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                tr(ondrop="drop(event)" ondragover="allowDrop(event)")
+                  th Monday
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                tr(ondrop="drop(event)" ondragover="allowDrop(event)")
+                  th Tuesday
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                tr(ondrop="drop(event)" ondragover="allowDrop(event)")
+                  th Wednesday
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                tr(ondrop="drop(event)" ondragover="allowDrop(event)")
+                  th Thursday
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                tr(ondrop="drop(event)" ondragover="allowDrop(event)")
+                  th Friday
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                tr(ondrop="drop(event)" ondragover="allowDrop(event)")
+                  th Saturday
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+            table.table.table-striped
+              thead
+                tr
+                  th P.M.
+                  th 1:00
+                  th 2:00
+                  th 3:00
+                  th 4:00
+                  th 5:00
+                  th 6:00
+                  th 7:00
+                  th 8:00
+                  th 9:00
+                  th 10:00
+                  th 11:00
+                  th 12:00 a.m.
+              tbody
+                tr(ondrop="drop(event)" ondragover="allowDrop(event)")
+                  th Sunday
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                tr(ondrop="drop(event)" ondragover="allowDrop(event)")
+                  th Monday
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                tr(ondrop="drop(event)" ondragover="allowDrop(event)")
+                  th Tuesday
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                tr(ondrop="drop(event)" ondragover="allowDrop(event)")
+                  th Wednesday
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                tr(ondrop="drop(event)" ondragover="allowDrop(event)")
+                  th Thursday
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                tr(ondrop="drop(event)" ondragover="allowDrop(event)")
+                  th Friday
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                tr(ondrop="drop(event)" ondragover="allowDrop(event)")
+                  th Saturday
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+                  th
+            .btn.btn-lg.btn-primary(type="submit")
+              i.fa.fa-save
+              | &nbsp;Save
+            br
+            br
+          .available#mols(ondrop="drop(event)" ondragover="allowDrop(event)")
+
+  script("type=text/javascript").
+    populateMolecules();

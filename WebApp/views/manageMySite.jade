@@ -2,83 +2,37 @@ extends managerLayout
 
 block scripts
   link(href='/stylesheets/style.css', rel='stylesheet')
-  script(src='/js/playlists.js')
-  script(type="text/javascript").
-    function allowDrop(ev) {
-      ev.preventDefault();
-    }
-
-    function drag(ev) {
-      ev.dataTransfer.setData("text", ev.target.id);
-    }
-
-    function drop(ev) {
-      ev.preventDefault();
-      var data = ev.dataTransfer.getData("text");
-      ev.target.appendChild(document.getElementById(data));
-    }
 
 block content
-  red
   .row
     .col-lg-12
-      h1.page-header Site Manager - Dashboard
+      h1.page-header Dashboard
   .row
+    .col-lg-3.col-md-6
+      .panel.panel-yellow
+        .panel-heading
+          .row
+            .col-xs-3
+              i.fa.fa-calendar.fa-5x
+            .col-xs-9.text-right
+              div Schedule
+        a(href='/sitemanager/manageSchedule')
+          .panel-footer
+            span.pull-left Manage Schedule
+            span.pull-right
+              i.fa.fa-cogs
+            .clearfix
     .col-lg-3.col-md-6
       .panel.panel-primary
         .panel-heading
           .row
             .col-xs-3
-              i.fa.fa-cloud-download.fa-5x
+              i.fa.fa-tasks.fa-5x
             .col-xs-9.text-right
-              div Version 2.0.0
-        a(href='#')
+              div Playlists
+        a(href='/sitemanager/viewPlaylists')
           .panel-footer
-            span.pull-left Download Software
+            span.pull-left Preview Playlists
             span.pull-right
-              i.fa.fa-download
+              i.fa.fa-film
             .clearfix
-  .row
-    .col-md-12
-      .panel.panel-default(style="margin-top:15px;")
-        .panel-heading
-          h Schedule
-        .panel-body
-          .times(style="width:100%;height:300px;display:inline-block;")
-            H 1am - Noon
-            br
-            .row
-              .col-md-1(ondrop="drop(event)" ondragover="allowDrop(event)")
-              .col-md-1(ondrop="drop(event)" ondragover="allowDrop(event)")
-              .col-md-1(ondrop="drop(event)" ondragover="allowDrop(event)")
-              .col-md-1(ondrop="drop(event)" ondragover="allowDrop(event)")
-              .col-md-1(ondrop="drop(event)" ondragover="allowDrop(event)")
-              .col-md-1(ondrop="drop(event)" ondragover="allowDrop(event)")
-              .col-md-1(ondrop="drop(event)" ondragover="allowDrop(event)")
-              .col-md-1(ondrop="drop(event)" ondragover="allowDrop(event)")
-              .col-md-1(ondrop="drop(event)" ondragover="allowDrop(event)")
-              .col-md-1(ondrop="drop(event)" ondragover="allowDrop(event)")
-              .col-md-1(ondrop="drop(event)" ondragover="allowDrop(event)")
-              .col-md-1(ondrop="drop(event)" ondragover="allowDrop(event)")
-            br
-            H 1pm - Midnight
-            br
-            .row
-              .col-md-1(ondrop="drop(event)" ondragover="allowDrop(event)")
-              .col-md-1(ondrop="drop(event)" ondragover="allowDrop(event)")
-              .col-md-1(ondrop="drop(event)" ondragover="allowDrop(event)")
-              .col-md-1(ondrop="drop(event)" ondragover="allowDrop(event)")
-              .col-md-1(ondrop="drop(event)" ondragover="allowDrop(event)")
-              .col-md-1(ondrop="drop(event)" ondragover="allowDrop(event)")
-              .col-md-1(ondrop="drop(event)" ondragover="allowDrop(event)")
-              .col-md-1(ondrop="drop(event)" ondragover="allowDrop(event)")
-              .col-md-1(ondrop="drop(event)" ondragover="allowDrop(event)")
-              .col-md-1(ondrop="drop(event)" ondragover="allowDrop(event)")
-              .col-md-1(ondrop="drop(event)" ondragover="allowDrop(event)")
-              .col-md-1(ondrop="drop(event)" ondragover="allowDrop(event)")
-          .available#mols(ondrop="drop(event)" ondragover="allowDrop(event)")
-          script(type="text/javascript").
-            populateMolecules();
-
-  script("type=text/javascript").
-    populateMolecules();

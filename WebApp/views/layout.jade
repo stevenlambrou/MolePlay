@@ -4,48 +4,63 @@ html
     script(src='http://code.jquery.com/jquery-1.9.1.js')
     script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
     link(href='/stylesheets/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
+    link(href='/stylesheets/font-awesome/css/font-awesome.css', rel='stylesheet')
     link(href='/stylesheets/style.css', rel='stylesheet')
+    link(href="/stylesheets/startbootstrap-landing-page-1.0.5/css/landing-page.css", rel='stylesheet')
     script(src="/stylesheets/bootstrap/js/transition.js")
     script(src="/stylesheets/bootstrap/js/collapse.js")
     block scripts
 
   body(style="margin-top:20px;")
-    .container
-      nav.navbar.navbar-default(role='navigation')
-        .container-fluid
-          .navbar-header
-            button(type="button" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false").navbar-toggle.collapsed
-              span.sr-only Toggle Navigation
-              span.icon-bar
-              span.icon-bar
-              span.icon-bar
-            a.navbar-brand(href='/') Molecular Playground
-          .navbar-collapse.collapse#navbar-collapse-1
-            ul.nav.navbar-nav
+    nav.navbar.navbar-default.topnav.navbar-fixed-top(role='navigation' style="z-index:12345")
+      .container-fluid
+        .navbar-header
+          button(type="button" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false").navbar-toggle.collapsed
+            span.sr-only Toggle Navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/')
+            img(src="/molecule.png" style="height:18px; display:inline-block")
+            | &nbsp;Molecular Playground
+        .navbar-collapse.collapse#navbar-collapse-1
+          ul.nav.navbar-nav
+            li
+              a(href='/playwithmolecules') Play With Molecules
+          ul.nav.navbar-nav.navbar-right
+            if loggedIn
               li
-                a(href='/playwithmolecules') Play With Molecules
-            ul.nav.navbar-nav.navbar-right
+                a(href='/author/uploadMolecule')
+                  i.glyphicon.glyphicon-cloud-upload
+                  |&nbsp;Upload Molecule
               li
-                a(href='/createaccount') Create Account
+                a(href='/myaccauth')
+                  i.fa.fa-user
+                  span
+                    &nbsp;My Account
               li
-                a(href='/myaccauth') My Account
-              if loggedIn
-                li
-                  a(href='/login') Log Out
-              else
-                li
-                  a(href='/login') Log In
+                a(href='/login')
+                  i.fa.fa-sign-out
+                  span
+                    &nbsp;Log Out
+            else
+              li
+                a(href='/createaccount')
+                  i.fa.fa-user-plus
+                  span
+                    &nbsp;Create Account
+              li
+                a(href='/login')
+                  i.fa.fa-sign-in
+                  span
+                    &nbsp;Log In
 
-      block content
+    block content
 
-      ol.breadcrumb
-        li
-          a(href='/') Home
-        if title !== 'Index'
-          li
-            a(href=currentpage) #{title}
-
-      footer
-        p ThreeTwenty 2015
-          span.glyphicon.glyphicon-copyright-mark
-        a(href='/devsitemap') Site Map (Dev)
+    footer
+      .container
+        .row
+          .col-lg-12
+            i.fa.fa-copyright
+            span
+              | &nbsp;ThreeTwenty 2015

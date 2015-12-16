@@ -22,25 +22,21 @@ block nav
     .sidebar-nav.navbar-collapse
       ul.nav.in#side-menu
         li
-          a(href='#')
-            i.glyphicon.glyphicon-dashboard
-              | &nbsp;Dashboard
+          a(href='/sitemanager')
+            i.fa.fa-dashboard
+            &nbsp;Dashboard
         li
           a(href='/sitemanager/createplaylist')
-            i.glyphicon.glyphicon-plus(style="padding-right: 8px;")
-              | &nbsp;Create Playlist
+            i.fa.fa-plus
+            &nbsp;Create Playlist
         li
           a(href='#')
-            i.glyphicon.glyphicon-inbox
-              | &nbsp;Manage Local Delegates
+            i.fa.fa-users
+            &nbsp;Manage Local Delegates
         li
           a(href='#')
-            i.glyphicon.glyphicon-alert
-              | &nbsp;Resign Site Manager
-        li
-          a(href='#')
-            i.glyphicon.glyphicon-log-out
-              | &nbsp;Logout
+            i.fa.fa-warning
+            &nbsp;Resign Site Manager
 
   #page-wrapper(style="min-height: 582px;")
     block content

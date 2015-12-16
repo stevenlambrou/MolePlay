@@ -1,50 +1,40 @@
 extends layout
 
 block content
-  h1.page-header Create Account
-  form.form-horizontal(method='post')
-    .form-group
-      label.col-md-4.control-label Permission Level
-      .col-md-4
-        .controls
-          label.radio-inline Author
-            input.form-control.required#permission1(type="radio", name="permission", value="1", checked)
-          label.radio-inline Site Manager
-            input.form-control.required#permission2(type="radio", name="permission", value="3")
-          label.radio-inline Global Manager
-            input.form-control.required#permission3(type="radio", name="permission", value="4")
-    br
-    br
-    .form-group
-      label.col-md-4.control-label Username
-      .col-md-4
-        input.form-control.required#username(type='text', placeholder='Username', name='username')
-    .form-group
-      label.col-md-4.control-label Email
-      .col-md-4
-        input.form-control.required#email(type='email', placeholder='Email', name='email')
-    .form-group
-      label.col-md-4.control-label First Name
-      .col-md-4
-        input.form-control.required#first-name(type='text', placeholder='First Name', name='firstname')
-    .form-group
-      label.col-md-4.control-label Last Name
-      .col-md-4
-        input.form-control.required#last-name(type='text', placeholder='Last Name', name='lastname')
-    .form-group
-      label.col-md-4.control-label Phone
-      .col-md-4
-        input.form-control#phone(type='text', placeholder='Phone Number', name='phonenumber')
-    .form-group
-      label.col-md-4.control-label Affiliation
-      .col-md-4
-        input.form-control.required#affiliation(type='text', placeholder='Affiliation', name='affiliation')
-    .form-group
-      label.col-md-4.control-label Password
-      .col-md-4
-        input.form-control.required#password(type='password', placeholder='Password', name='password')
-    .form-group
-      label.col-md-4.control-label Confirm Password
-      .col-md-4
-        input.form-control.required#password(type='password', placeholder='Confirm Password', name='password2')
-        button.btn.btn-default(type='submit' style="margin-top:15px;") Create Account
+  .container
+    h1.page-header Create Account
+    form.form-horizontal(method='post')
+      
+      .form-group
+        label.col-md-4.control-label Username
+        .col-md-4
+          input.form-control.required#username(type='text', placeholder='Username', name='username')
+      .form-group
+        label.col-md-4.control-label Email
+        .col-md-4
+          input.form-control.required#email(type='email', placeholder='Email', name='email')
+      .form-group
+        label.col-md-4.control-label First Name
+        .col-md-4
+          input.form-control.required#first-name(type='text', placeholder='First Name', name='firstname')
+      .form-group
+        label.col-md-4.control-label Last Name
+        .col-md-4
+          input.form-control.required#last-name(type='text', placeholder='Last Name', name='lastname')
+      .form-group
+        label.col-md-4.control-label Phone
+        .col-md-4
+          input.form-control#phone(type='text', placeholder='Phone Number', name='phonenumber')
+      .form-group
+        label.col-md-4.control-label Affiliation
+        .col-md-4
+          input.form-control.required#affiliation(type='text', placeholder='Affiliation', name='affiliation')
+      .form-group
+        label.col-md-4.control-label Password
+        .col-md-4
+          input.form-control.required#password(type='password', placeholder='Password', name='password')
+      .form-group
+        label.col-md-4.control-label Confirm Password
+        .col-md-4
+          input.form-control.required#password(type='password', placeholder='Confirm Password', name='password2')
+          button.btn.btn-primary(type='submit' style="margin-top:15px;") Create Account
