@@ -2,6 +2,9 @@ extends managerLayout
 
 block scripts
   link(href='/stylesheets/style.css', rel='stylesheet')
+  script(src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js")
+  script(src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js")
+  link(rel='stylesheet' href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css")
 
 block content
   .row
@@ -36,3 +39,5 @@ block content
             span.pull-right
               i.fa.fa-film
             .clearfix
+   .graph-container
+    .graph#hero-bar(style="height:250px;")
