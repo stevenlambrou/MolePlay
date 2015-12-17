@@ -17,12 +17,12 @@ block content
       for(var i = 0; i < mols; i++) {
         var div = $('<div>');
         var time = $('<input>');
-        div.text(moles[i].name);
+        div.text(playlist[i].name);
         div.attr("draggable","true");
         div.attr("ondragstart","drag(event)");
-        div.attr("id",moles[i].name);
+        div.attr("id",playlist[i].name);
         div.attr("class","btn-default btn");
-        div.attr("author",moles[i].author);
+        div.attr("author",playlist[i].author);
         div.attr("index", i);
         $('#mols').append(div);
       }

@@ -30,7 +30,6 @@ users['globaladmin'] = { permission: '4',
 
 var playlists = [];
 var molecules = moles.molecules;
-console.log(molecules)
 
 function checkLogin (sesh) {
   var loginStatus = false;
@@ -57,7 +56,7 @@ function getMolecules () {
 }
 
 function addPlaylist (play) {
-  playlists[play.title] = play;
+  playlists.push(play);
 }
 
 function getPlaylists () {

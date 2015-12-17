@@ -35,6 +35,7 @@ router.get('/manageSchedule', function(req, res, next) {
 router.get('/viewPlaylists', function(req, res, next) {
   if (checkPermission(req)) {
     res.render('viewPlaylists', { loggedIn: users.checkLogin(req.session), playlists: JSON.stringify(users.getPlaylists()) });
+    console.log(JSON.stringify(users.getPlaylists()));
   } else {
     res.send('<script> window.alert("You do not have permission to view this page"); window.location = "/"; </script>');
   }
@@ -58,7 +59,7 @@ router.post('/createplaylist', function(req, res, next) {
   console.log(req.body);
   console.log(playlist);
   users.addPlaylist(playlist);
-  res.render('createPlaylist', { loggedIn: users.checkLogin(req.session), molecules: JSON.stringify(users.getMolecules()) });
+  res.render('viewPlaylists', { loggedIn: users.checkLogin(req.session), playlists: JSON.stringify(users.getPlaylists()) });
   console.log(users.getPlaylists());
 });
 
