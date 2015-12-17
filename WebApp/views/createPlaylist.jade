@@ -7,13 +7,24 @@ block scripts
     }
 
     function drag(ev) {
+      var target = document.getElementById(ev.target.id);
+      var moleculeObj = { molecule: ev.target.id, author: target.getAttribute("author"), timeIndex: target.getAttribute("index") };
+      ev.dataTransfer.setData("json", JSON.stringify(moleculeObj));
       ev.dataTransfer.setData("text", ev.target.id);
     }
 
+    var moles = [];
     function drop(ev) {
       ev.preventDefault();
-      var data = ev.dataTransfer.getData("text");
-      ev.target.appendChild(document.getElementById(data));
+      var element = ev.dataTransfer.getData("text");
+      ev.target.appendChild(document.getElementById(element));
+      var data = JSON.parse(ev.dataTransfer.getData("json"));
+      if (ev.target.id === 'playlist') {
+        moles.push(data);
+      } else {
+        moles.splice(jQuery.inArray(data, moles), 1);
+      }
+      $('#list').val(JSON.stringify(moles));
     }
 
 block content
@@ -28,6 +39,7 @@ block content
         label.sr-only.control-label Playlist
         .col-md-4
           #playlist(name="playlist" ondrop="drop(event)" ondragover="allowDrop(event)" style="width:400px;height:200px;display:inline-block")
+        input#list(name="list" type="hidden")
       .form-group
         label.sr-only.control-label Molecules
         .col-md-4
@@ -38,7 +50,25 @@ block content
           button.btn.btn-primary(type="submit" onclick="create()")
             i.fa.fa-check
             span
-              |  &nbsp;Submit
+              | &nbsp;Submit
 
     script(type="text/javascript").
-      populateMolecules();
+      var moles = !{molecules};
+      var mols = moles.length;
+      for(var i = 0; i < mols; i++) {
+        var div = $('<div>');
+        var time = $('<input>');
+        div.text(moles[i].name);
+        div.attr("draggable","true");
+        div.attr("ondragstart","drag(event)");
+        div.attr("id",moles[i].name);
+        div.attr("class","btn-default btn");
+        div.attr("author",moles[i].author);
+        div.attr("index", i);
+        time.attr("name","time");
+        time.attr("placeholder","Sec.");
+        time.attr("size","5");
+        div.append("<br>");
+        div.append(time);
+        $('#mols').append(div);
+      }

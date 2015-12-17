@@ -1,4 +1,5 @@
 exports = module.exports = {};
+var moles = require('../public/molecules.json');
 
 // In place of db for demo
 var users = [];
@@ -28,7 +29,8 @@ users['globaladmin'] = { permission: '4',
                   password: 'test' };
 
 var playlists = [];
-var molecules = [];
+var molecules = moles.molecules;
+console.log(molecules)
 
 function checkLogin (sesh) {
   var loginStatus = false;
