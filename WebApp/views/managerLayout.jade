@@ -18,17 +18,28 @@ block scripts
     }
 
 block nav
-  nav.navbar-default.sidebar(role='navigation', style="margin-top:0px")
+  div.navbar-default.sidebar(role='navigation', style="margin-top:0px")
     .sidebar-nav.navbar-collapse
-      ul.nav.in#side-menu
+      ul.nav#side-menu
         li
           a(href='/sitemanager')
             i.fa.fa-dashboard
             &nbsp;Dashboard
         li
-          a(href='/sitemanager/createplaylist')
-            i.fa.fa-plus
-            &nbsp;Create Playlist
+          a(href="#")
+            i.fa.fa-list
+            &nbsp;Playlists
+            span
+              i.fa.arrow
+          ul.nav.nav-second-level
+            li
+              a(href='/sitemanager/createplaylist')
+                i.fa.fa-plus
+                &nbsp;Create Playlist
+            li
+              a(href='/sitemanager/viewPlaylists')
+                i.fa.fa-film
+                &nbsp;Preview Playlists
         li
           a(href='#')
             i.fa.fa-users
