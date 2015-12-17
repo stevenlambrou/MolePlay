@@ -6,7 +6,7 @@ block scripts
       var mol = $("#molName").val();
       javascript:Jmol.loadFile(jmolApplet0,'$' + mol);
     }
-    function change(name) {
+    function changeO(name) {
       javascript:Jmol.loadFile(jmolApplet0,'$' + name);
     }
 block content
@@ -23,13 +23,13 @@ block content
     .row
       .col-md-6.col-md-offset-3
         p Popular:&nbsp;
-          a(href='#' onclick="change('glucose')") Glucose
+          a(href='#' onclick="changeO('glucose')") Glucose
           &nbsp;
-          a(href='#' onclick="change('Aspirin')") Aspirin
+          a(href='#' onclick="changeO('Aspirin')") Aspirin
           &nbsp;
-          a(href='#' onclick="change('Adderall ')") Adderall
+          a(href='#' onclick="changeO('Adderall ')") Adderall
           &nbsp;
-          a(href='#' onclick="change('ATP')") ATP
+          a(href='#' onclick="changeO('ATP')") ATP
       br
       #div(style="margin-left:calc(50% - 300px)")
         script#script(type="text/javascript" src="http://chemapps.stolaf.edu/jmol/jmol.php?model=caffeine&inline").
