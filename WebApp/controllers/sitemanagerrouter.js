@@ -38,8 +38,14 @@ router.get('/createplaylist', function(req, res, next) {
 
 router.post('/createplaylist', function(req, res, next) {
   // Store molecules in playlist array
-  console.log(req.body);
-  var playlist = { title: req.body.playlistname, molecules: req.body.playlist };
+  var moles = JSON.parse(req.body.list);
+  for (var i=0; i<moles.length; i++) {
+    moles[i].time = req.body.time[moles[i].timeIndex];
+    delete moles[i].timeIndex;
+  }
+  var playlist = { title: req.body.playlistname, molecules: moles };
+  console.log(playlist);
+  users.addPlaylist(playlist);
   res.render('createPlaylist', { loggedIn: users.checkLogin(req.session), molecules: users.getMolecules() });
 });
 
