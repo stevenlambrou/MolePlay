@@ -21,7 +21,7 @@ block scripts
       var data = JSON.parse(ev.dataTransfer.getData("json"));
       if (ev.target.id === 'playlist') {
         moles.push(data);
-      } else {
+      } else if (ev.target.id === 'mols') {
         moles.splice(jQuery.inArray(data, moles), 1);
       }
       $('#list').val(JSON.stringify(moles));
