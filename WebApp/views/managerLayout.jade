@@ -40,14 +40,22 @@ block nav
               a(href='/sitemanager/viewPlaylists')
                 i.fa.fa-film
                 &nbsp;Preview Playlists
+
         li
-          a(href='#')
-            i.fa.fa-users
-            &nbsp;Manage Local Delegates
-        li
-          a(href='#')
-            i.fa.fa-warning
-            &nbsp;Resign Site Manager
+          a(href="#")
+            i.fa.fa-cogs
+            &nbsp;Site Management
+            span
+              i.fa.arrow
+          ul.nav.nav-second-level
+            li
+              a(href='#')
+                i.fa.fa-users
+                &nbsp;Manage Local Delegates
+            li
+              a(href='#')
+                i.fa.fa-warning
+                &nbsp;Resign Site Manager
 
   #page-wrapper(style="min-height: 582px;")
     block content
