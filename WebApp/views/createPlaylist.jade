@@ -38,12 +38,12 @@ block content
       .form-group
         label.sr-only.control-label Playlist
         .col-md-4
-          #playlist(name="playlist" ondrop="drop(event)" ondragover="allowDrop(event)" style="width:400px;height:200px;display:inline-block")
+          .well#playlist(name="playlist" ondrop="drop(event)" ondragover="allowDrop(event)" style="width:400px;height:200px;display:inline-block")
         input#list(name="list" type="hidden")
       .form-group
         label.sr-only.control-label Molecules
         .col-md-4
-          #mols(style="width:400px; height:200px;" ondrop="drop(event)" ondragover="allowDrop(event)")
+          .well#mols(style="width:400px; height:200px;" ondrop="drop(event)" ondragover="allowDrop(event)")
       .form-group
         label.sr-only.control-label Submit
         .col-md-4
