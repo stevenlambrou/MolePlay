@@ -1,28 +1,28 @@
 extends portalLayout
 
 block nav
-  nav.navbar-default.sidebar(role='navigation', style="margin-top:0px")
+  div.navbar-default.sidebar(role='navigation', style="margin-top:0px")
     .sidebar-nav.navbar-collapse
-      ul.nav.in#side-menu
+      ul.nav#side-menu
         li
-          a(href='/adminportal')
+          a(href='/globaladmin')
             i.fa.fa-dashboard
-               Dashboard
+            | &nbsp;Global Admin Dashboard
         li
-          a(href='/reviewsitemanagerapplications')
+          a(href='#')
             i.fa.fa-inbox
-               Review Applications
+            | &nbsp;Review Applications
         li
           a(href='#')
             i.fa.fa-users
-               Manage Users
+            | &nbsp;Manage Users
         li
           a(href='/globaladmin/reviewmolecules')
             i.fa.fa-list
-               Review Molecules
+            | &nbsp;Review Molecules
         li
           a(href='#')
             i.fa.fa-warning
-               Resign Global Admin
+            | &nbsp;Resign Global Admin
   #page-wrapper(style="min-height: 582px;")
     block content

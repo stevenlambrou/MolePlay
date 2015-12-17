@@ -8,8 +8,10 @@ html
     link(href='/stylesheets/style.css', rel='stylesheet')
     link(href='/stylesheets/adminCSS/dist/css/sb-admin-2.css', rel='stylesheet')
     script(src="/stylesheets/bootstrap/js/dropdown.js")
+    script(src="/stylesheets/bootstrap/js/transition.js")
     script(src="/stylesheets/adminCSS/dist/js/sb-admin-2.js")
     script(src="/stylesheets/bootstrap/js/collapse.js")
+    script(src="/stylesheets/bootstrap/js/dropdown.js")
     script(src="/stylesheets/adminCSS/bower_components/metismenu/dist/metisMenu.min.js")
     block scripts
   body
@@ -17,7 +19,9 @@ html
       nav.navbar.navbar-default.navbar-static-top(role='navigation' style="margin-bottom:0")
         .container-fluid
           .navbar-header
-            a.navbar-brand(href='/') Molecular Playground
+            a.navbar-brand(href='/' style="height:38px; margin-top:-8px;")
+              img(src="/logo.png" style="height:38px; display:inline-block")
+              | &nbsp;Molecular Playground
           #navbar.navbar-collapse
             ul.navbar-nav.nav
               li
