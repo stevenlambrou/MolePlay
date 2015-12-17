@@ -57,7 +57,7 @@ function getMolecules () {
 }
 
 function addPlaylist (play) {
-  playlists[play.name] = play;
+  playlists[play.title] = play;
 }
 
 function getPlaylists () {

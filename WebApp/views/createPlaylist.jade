@@ -8,7 +8,7 @@ block scripts
 
     function drag(ev) {
       var target = document.getElementById(ev.target.id);
-      var moleculeObj = { molecule: ev.target.id, author: target.getAttribute("author"), timeIndex: target.getAttribute("index") };
+      var moleculeObj = { name: ev.target.id, author: target.getAttribute("author")};
       ev.dataTransfer.setData("json", JSON.stringify(moleculeObj));
       ev.dataTransfer.setData("text", ev.target.id);
     }
@@ -53,18 +53,17 @@ block content
               | &nbsp;Submit
 
     script(type="text/javascript").
-      var moles = !{molecules};
-      var mols = moles.length;
+      var molecules = !{molecules};
+      var mols = molecules.length;
       for(var i = 0; i < mols; i++) {
         var div = $('<div>');
         var time = $('<input>');
-        div.text(moles[i].name);
+        div.text(molecules[i].name);
         div.attr("draggable","true");
         div.attr("ondragstart","drag(event)");
-        div.attr("id",moles[i].name);
+        div.attr("id",molecules[i].name);
         div.attr("class","btn-default btn");
-        div.attr("author",moles[i].author);
-        div.attr("index", i);
+        div.attr("author",molecules[i].author);
         time.attr("name","time");
         time.attr("placeholder","Sec.");
         time.attr("size","5");
