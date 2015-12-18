@@ -262,7 +262,20 @@ block content
               | &nbsp;Save
             br
             br
-          .available#mols(ondrop="drop(event)" ondragover="allowDrop(event)")
+          .available#mols(style="height:50px" ondrop="drop(event)" ondragover="allowDrop(event)")
 
   script("type=text/javascript").
     populateMolecules();
+  script(type="text/javascript").
+    var playlist = !{playlists};
+    console.log(playlist);
+    var mols = playlist.length;
+    for(var i = 0; i < mols; i++) {
+      var red = $('<div>');
+      red.attr("draggable","true");
+      red.attr("ondragstart","drag(event)");
+      red.text(playlist[i].title);
+      red.attr("id",playlist[i].title);
+      red.attr("class","btn-default btn");
+      $('#mols').append(red);
+    }

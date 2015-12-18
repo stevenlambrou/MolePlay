@@ -26,7 +26,7 @@ router.get('/playwithmolecules', function(req, res, next) {
 
 router.get('/manageSchedule', function(req, res, next) {
   if (checkPermission(req)) {
-    res.render('manageSchedule');
+    res.render('manageSchedule', { loggedIn: users.checkLogin(req.session), playlists: JSON.stringify(users.getPlaylists()) });
   } else {
     res.send('<script> window.alert("You do not have permission to view this page"); window.location = "/"; </script>');
   }

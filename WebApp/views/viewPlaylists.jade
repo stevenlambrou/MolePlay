@@ -2,27 +2,39 @@ extends managerLayout
 
 block scripts
   link(href='/stylesheets/style.css', rel='stylesheet')
+  script(src='/stylesheets/bootstrap/js/bootstrap.min.js' type='text/javascript')
 
 block content
   .row
     .col-md-12
-      .panel.panel-default(style="margin-top:15px;")
-        .panel-heading
-          h Schedule
-        .panel-body
-          #mols(style="height:250px;")
-    script(type="text/javascript").
-      var playlist = !{playlists};
-      var mols = playlist.length;
-      for(var i = 0; i < mols; i++) {
-        var div = $('<div>');
-        var time = $('<input>');
-        div.text(playlist[i].name);
-        div.attr("draggable","true");
-        div.attr("ondragstart","drag(event)");
-        div.attr("id",playlist[i].name);
-        div.attr("class","btn-default btn");
-        div.attr("author",playlist[i].author);
-        div.attr("index", i);
-        $('#mols').append(div);
-      }
+          #myCarousel.carousel.slide(style="height:500px;" data-ride="carousel")
+            ol.carousel-indicators
+              li(data-target="#myCarousel" data-slide-to="0")
+              li(data-target="#myCarousel" data-slide-to="1")
+              li(data-target="#myCarousel" data-slide-to="2")
+              li(data-target="#myCarousel" data-slide-to="3")
+            .carousel-inner(role="listbox")
+              .item.active
+                img(src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Koffein_-_Caffeine.svg/2000px-Koffein_-_Caffeine.svg.png" width="500" align="middle")
+                .carousel-caption
+                  h3 Caffeine
+              .item
+                img(src="/molecule.png" width="460" height="345")
+                .carousel-caption
+                  h3 MEIN
+            a.left.carousel-control(href="#myCarousel" role="button" data-slide="prev")
+              i.glyphicon.glyphicon-chevron-left
+            a.right.carousel-control(href="#myCarousel" role="button" data-slide="next")
+              i.glyphicon.glyphicon-chevron-right
+
+  script(type="text/javascript").
+    var playlist = !{playlists};
+    console.log(playlist);
+    var mols = playlist.length;
+    for(var i = 0; i < mols; i++) {
+      var red = $('<div>');
+      red.text(playlist[i].title);
+      red.attr("id",playlist[i].title);
+      red.attr("class","btn-default btn");
+      $('#mols').append(red);
+    }
